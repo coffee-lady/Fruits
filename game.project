@@ -1,0 +1,16 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1366
+
+[android]
+input_method = HiddenInputField
+
+[project]
+title = Fruits
+dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip
+
