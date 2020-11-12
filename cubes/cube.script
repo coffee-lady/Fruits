@@ -1,0 +1,7 @@
+function init(self, dt)
+
+end
+
+function update(self, dt)
+
+end
