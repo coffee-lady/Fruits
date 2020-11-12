@@ -1,14 +1,16 @@
 local rendercam = require('rendercam.rendercam')
 local frequency = 2
-local max_x, max_y = window.get_size()
-max_x = max_x / 2
-max_y = max_y / 2
-local min_x = - max_x
-local min_y = 0 - max_y * 2
+local MAX_X, MAX_Y = window.get_size()
+MAX_X = MAX_X / 2
+MAX_Y = MAX_Y / 2
+local MIN_X = - MAX_X
+local MIN_Y = - MAX_Y
+local MAX_ANGLE = math.pi / 2
+local MIN_ANGLE = math.pi / 5
 local SPEED = 500
 local GRAVITY = 300
 
-print(min_y)
+print(MIN_Y)
 
 go.property('factory_block', msg.url())
 
@@ -16,8 +18,8 @@ local function init_cube(self, dt)
 	math.randomseed(os.time() / math.random())
 
 	local pos = go.get_position()
-	pos.x = math.random() * (max_x - min_x) + min_x
-	pos.y = min_y
+	pos.x = math.random() * (MAX_X - MIN_X) + MIN_X
+	pos.y = MIN_Y
 
 	local cube_id = factory.create(self.factory_block, pos)
 
@@ -25,13 +27,13 @@ local function init_cube(self, dt)
 		id = cube_id,
 		pos = go.get_position(cube_id),
 		time = 0,
-		angle = math.random() * (math.pi / 2 - math.random()),
+		angle = math.random() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE,
 		start_x = pos.x
 	}
-	if pos.x > max_x / 2 then
-		cube_data.angle = cube_data.angle + math.pi / 2
-	elseif pos.x > min_x / 2 and math.random() > 0.5 then
-		cube_data.angle = cube_data.angle + math.pi / 2 - math.random() * 1.3
+	if pos.x > MAX_X / 2 then
+		cube_data.angle = cube_data.angle + MAX_ANGLE
+	elseif pos.x > MIN_X / 2 and math.random() > 0.5 then
+		cube_data.angle = cube_data.angle + MAX_ANGLE
 	end
 	self.cubes[#self.cubes + 1] = cube_data
 end
@@ -48,7 +50,7 @@ local function update_cubes(self, dt)
 	for i = 1, #self.cubes do
 		local cube = self.cubes[i]
 
-		if cube and (cube.pos.y < min_y or cube.pos.x > max_x or cube.pos.x < min_x) then
+		if cube and (cube.pos.y < MIN_Y or cube.pos.x > MAX_X or cube.pos.x < MIN_X) then
 			go.delete(cube.id)
 			table.remove(self.cubes, i)
 		end
