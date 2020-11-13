@@ -1,6 +1,6 @@
 components {
   id: "factory"
-  component: "/cubes/factory.script"
+  component: "/spawn_objects/spawn_obj_factory/factory.script"
   position {
     x: 0.0
     y: 0.0
@@ -21,7 +21,7 @@ components {
 embedded_components {
   id: "cube_factory"
   type: "factory"
-  data: "prototype: \"/cubes/cube.go\"\n"
+  data: "prototype: \"/spawn_objects/spawn_obj/obj.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

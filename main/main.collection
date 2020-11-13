@@ -1,7 +1,7 @@
 name: "main"
-instances {
-  id: "factory"
-  prototype: "/cubes/factory.go"
+collection_instances {
+  id: "spawn_objects"
+  collection: "/spawn_objects/spawn_objects.collection"
   position {
     x: 0.0
     y: 0.0
