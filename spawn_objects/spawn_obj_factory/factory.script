@@ -1,6 +1,6 @@
 local factory_config = require('spawn_objects.config.factory')
 local window_module = require('spawn_objects.modules.window')
-local zones_module = require('spawn_objects.modules.zones')
+local zones_module = require('spawn_objects.modules.zones.index')
 
 go.property('factory_block', msg.url())
 

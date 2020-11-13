@@ -2,6 +2,10 @@ local rendercam = require('rendercam.rendercam')
 
 local window_module = {}
 
+function window_module.get_sizes()
+    return rendercam.window.x, rendercam.window.y
+end
+
 function window_module.get_coords()
     local max_x = rendercam.window.x / 2
     local max_y = rendercam.window.y / 2
