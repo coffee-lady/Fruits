@@ -1,17 +1,18 @@
-local config = require('config.app')
+local config = require('config.config_app')
+local random_service = require('modules.random_service.random_service')
 
 local object_config = config.spawn_objects.object
+local random = random_service.random
+local random_arr = random_service.random_arr
 
 go.property("anim_to_play", hash(""))
 
 function init(self)
 	msg.post("#sprite", "play_animation", { id = self.anim_to_play })
-end
 
-function update(self)
-	local scale_x, scale_y = go.get("#sprite", "scale.x"), go.get("#sprite", "scale.y")
-	scale_x = scale_x - object_config.d_scale * scale_x
-	scale_y = scale_y - object_config.d_scale * scale_y
-	go.set("#sprite", "scale.x", scale_x)
-	go.set("#sprite", "scale.y", scale_y)
+	local scale = go.get("#sprite", "scale")
+	scale = scale - random_arr(object_config.d_scale_bounds) * scale
+
+	go.animate(go.get_id(), 'scale', go.PLAYBACK_ONCE_FORWARD, scale, go.EASING_LINEAR, random_arr(object_config.scale_duration_bounds))
+	go.animate(go.get_id(), 'euler.z', go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_LINEAR, random_arr(object_config.rotation_duration_bounds))
 end

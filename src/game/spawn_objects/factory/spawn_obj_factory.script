@@ -1,30 +1,21 @@
-local config = require('config.app')
+local config = require('config.config_app')
 local window_service = require('modules.window_service.module_window_service')
 local zones_module = require('modules.spawn_objects_zones.module_spawn_objects_zones')
+local random_service = require('modules.random_service.random_service')
 
 local factory_config = config.spawn_objects.factory
 local object_config = config.spawn_objects.object
 local pack_config = config.spawn_objects.pack
 
-math.randomseed(os.time())
+local random = random_service.random
+local random_arr = random_service.random_arr
+
 go.property('factory_block', msg.url())
 go.property('spawn_obj_image', '/src/assets/atalses/spawn_objects.atlas')
 
-local function init_object(self, dt)
-	local obj = {
-		pos = go.get_position(),
-	}
-
-	zones_module.random_push(obj)
-
-	obj.id = factory.create(self.factory_block, obj.pos, nil, { anim_to_play = hash(math.random(object_config.sprites_number)) })
-
-	self.objects[#self.objects + 1] = obj
-end
-
 local function init_pack(self, dt)
 	local min_pack, max_pack = pack_config:get_sizes()
-	local size = math.random() * (max_pack - min_pack) + min_pack
+	local size = random(min_pack, max_pack)
 
 	local pack = {}
 	for i = 1, size do
@@ -37,9 +28,9 @@ local function init_pack(self, dt)
 	zones_module.random_push_pack(pack)
 	for i = 1, #pack do
 		local obj = pack[i]
-		obj.id = factory.create(self.factory_block, obj.pos, nil, { anim_to_play = hash(math.random(object_config.sprites_number)) })
 		self.objects[#self.objects + 1] = obj
 	end
+	self.timer = pack.timer + random_arr(factory_config.interval_bounds)
 end
 
 local function update_objects(self, dt)
@@ -47,16 +38,26 @@ local function update_objects(self, dt)
 
 	for i = 1, #self.objects do
 		local obj = self.objects[i]
-		obj.pos.x = obj.pos.x + obj.speed_x * dt
-		obj.pos.y = obj.pos.y + obj.speed_y * dt
-		obj.speed_y = obj.speed_y - factory_config.gravity
-		go.set_position(obj.pos, obj.id)
+
+		if obj.id then
+			obj.pos.x = obj.pos.x + obj.speed.x * dt
+			obj.pos.y = obj.pos.y + obj.speed.y * dt
+			obj.speed.y = obj.speed.y - factory_config.gravity
+			go.set_position(obj.pos, obj.id)
+		else
+			obj.timer = obj.timer - dt
+			if obj.timer <= 0 then
+				local scale = random_arr(object_config.scale_bounds)
+				local anim = { anim_to_play = hash(math.random(object_config.sprites_number)) }
+				obj.id = factory.create(self.factory_block, obj.pos, nil, anim, scale)
+			end
+		end
 	end
 
 	for i = 1, #self.objects do
 		local obj = self.objects[i]
 
-		if obj and (obj.pos.y < min_y or obj.pos.x > max_x or obj.pos.x < min_x) then
+		if obj and (obj.pos.y < min_y) then
 			go.delete(obj.id)
 			table.remove(self.objects, i)
 		end
@@ -65,7 +66,7 @@ end
 
 local function set_timer(self)
 	local min_interval, max_interval = factory_config:get_interval_bounds()
-	self.timer = math.random() * ( max_interval - min_interval ) + min_interval
+	self.timer = random(min_interval, max_interval)
 end
 
 function init(self)
@@ -76,7 +77,6 @@ end
 function update(self, dt)
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
-		set_timer(self)
 		init_pack(self, dt)
 	end
 	update_objects(self, dt)

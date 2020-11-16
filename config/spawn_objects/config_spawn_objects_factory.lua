@@ -1,5 +1,5 @@
 local factory_config = {
-    interval_bounds = { 2, 4 },
+    interval_bounds = { 0.2, 0.5 },
     gravity = 9,
 }
 
