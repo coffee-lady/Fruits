@@ -1,0 +1,17 @@
+local config = require('config.app')
+
+local object_config = config.spawn_objects.object
+
+go.property("anim_to_play", hash(""))
+
+function init(self)
+	msg.post("#sprite", "play_animation", { id = self.anim_to_play })
+end
+
+function update(self)
+	-- local scale_x, scale_y = go.get("#sprite", "scale.x"), go.get("#sprite", "scale.y")
+	-- scale_x = scale_x - object_config.scale * scale_x
+	-- scale_y = scale_y - object_config.scale * scale_y
+	-- msg.post("#sprite", "scale.x", scale_x)
+	-- msg.post("#sprite", "scale.y", scale_y)
+end

@@ -1,0 +1,6 @@
+local window_service = require('modules.window_service.module_window_service')
+
+function init(self)
+	math.randomseed(os.time())
+	-- window_service:init()
+end

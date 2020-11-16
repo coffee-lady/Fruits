@@ -1,5 +1,5 @@
 [bootstrap]
-main_collection = /main/main.collectionc
+main_collection = /src/game/main/main.collectionc
 render = /rendercam/rendercam.renderc
 
 [script]
@@ -15,4 +15,5 @@ input_method = HiddenInputField
 [project]
 title = Fruits
 dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip
+write_log = 1
 
