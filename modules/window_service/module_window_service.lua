@@ -18,10 +18,11 @@ local window_service = {
 -- end
 
 function window_service:update()
-    -- self.left_bottom_coords = rendercam.screen_to_world_2d(0, 0, false)
-    -- self.right_top_coords = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, false)
+    -- self.start_coords = rendercam.screen_to_world_2d(0, 0, false)
+    -- self.end_coords = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, false)
     -- self.sizes = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, true)
 
+    -- print(self.sizes)
     local window_coords = rendercam.window
     self.start_coords = vmath.vector3(-window_coords.x / 2, -window_coords.y / 2, 0)
     self.end_coords = vmath.vector3(window_coords.x / 2, window_coords.y / 2, 0)

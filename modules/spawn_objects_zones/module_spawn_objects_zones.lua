@@ -32,7 +32,7 @@ function zones_module.random_push_obj(obj)
     set_object_params(obj, zone.spawn_angles, obj_config.speed_bounds, coords_start, coords_end)
 end
 
-function zones_module.random_push_pack(pack)
+function zones_module.set_pack_objects_prop(pack)
     local zone = zones[math.random(#zones)]
     local coords_start, coords_end = zone:get_coords()
     local width, height = window_service:get_sizes()
