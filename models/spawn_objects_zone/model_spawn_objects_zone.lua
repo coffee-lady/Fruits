@@ -5,12 +5,13 @@ local zones_config = config.spawn_objects.zones
 
 local Spawn_Objects_Zone = {}
 
-function Spawn_Objects_Zone:new(config)
+function Spawn_Objects_Zone:new(spawn_angles, paddings, rel_coords_start, rel_coords_end)
     local zone = {
-        spawn_angles = config.spawn_angles,
-        paddings = config.paddings,
-        coords_start = nil,
-        coords_end = nil,
+        spawn_angles = spawn_angles,
+        _rel_coords_start = rel_coords_start,
+        _rel_coords_end = rel_coords_end,
+        coords_start = self:_set_coords_start(rel_coords_start),
+        coords_end = self:_set_coords_end(rel_coords_end),
     }
     self.__index = self
     return setmetatable(zone, self)
@@ -24,23 +25,26 @@ function Spawn_Objects_Zone:get_spawn_angles()
     return self.spawn_angles[1], self.spawn_angles[2]
 end
 
-function Spawn_Objects_Zone:get_paddings()
-    return self.paddings_x_y[1], self.paddings_x_y[2]
-end
-
-function Spawn_Objects_Zone:_set_coords_paddings()
-    local function _set_paddings(coord1, coord2, padding, length)
-        return coord1 + length * padding, coord2 - length * padding
-    end
-
+function Spawn_Objects_Zone:_set_coords_start(_rel_coords_start)
     local height, width = window_service:get_sizes()
     local min_x, min_y, max_x, max_y = window_service:get_coords()
 
-    min_x, max_x = _set_paddings(min_x, max_x, self.paddings.x, width / 2)
-    min_y, max_y = _set_paddings(min_y, max_y, self.paddings.y, height / 2)
+    local coords_start = vmath.vector3(0, 0, 0)
+    coords_start.x = vmath.lerp(_rel_coords_start.x, min_x, max_x)
+    coords_start.y = vmath.lerp(_rel_coords_start.y, min_y, max_y)
 
-    self.coords_start = vmath.vector3(min_x, min_y, 0)
-    self.coords_end = vmath.vector3(max_x, max_y, 0)
+    return coords_start
+end
+
+function Spawn_Objects_Zone:_set_coords_end(_rel_coords_end)
+    local height, width = window_service:get_sizes()
+    local min_x, min_y, max_x, max_y = window_service:get_coords()
+
+    local coords_end = vmath.vector3(0, 0, 0)
+    coords_end.x = max_x - ( max_x - min_x ) * _rel_coords_end.x
+    coords_end.y = max_y - ( max_y - min_y ) * _rel_coords_end.y
+
+    return coords_end
 end
 
 return Spawn_Objects_Zone

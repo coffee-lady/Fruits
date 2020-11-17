@@ -1,6 +1,6 @@
 local pack_config = {
     sizes = { 3, 6 },
-    timer_bounds = { 0.1, 0.5 }
+    timer_bounds = { 0.1, 0.3 }
 }
 
 function pack_config:get_sizes() return self.sizes[1], self.sizes[2] end

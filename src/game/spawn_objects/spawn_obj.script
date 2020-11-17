@@ -13,6 +13,15 @@ function init(self)
 	local scale = go.get("#sprite", "scale")
 	scale = scale - random_arr(object_config.d_scale_bounds) * scale
 
+	local rotation_angle = math.random() >= 0.5 and 360 or -360
+
 	go.animate(go.get_id(), 'scale', go.PLAYBACK_ONCE_FORWARD, scale, go.EASING_LINEAR, random_arr(object_config.scale_duration_bounds))
-	go.animate(go.get_id(), 'euler.z', go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_LINEAR, random_arr(object_config.rotation_duration_bounds))
+	go.animate(go.get_id(), 'euler.z', go.PLAYBACK_LOOP_FORWARD, rotation_angle, go.EASING_LINEAR, random_arr(object_config.rotation_duration_bounds))
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then
+		particlefx.play("#swipe_effect")
+		-- go.delete()
+	end
 end

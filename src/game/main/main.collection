@@ -26,6 +26,11 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
+      id: "nearZ"
+      value: "-100.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
       id: "aspectRatio"
       value: "1366.0, 640.0, 0.0"
       type: PROPERTY_TYPE_VECTOR3
@@ -42,6 +47,11 @@ instances {
     }
     properties {
       id: "expandView"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "fixedArea"
       value: "false"
       type: PROPERTY_TYPE_BOOLEAN
     }
@@ -63,7 +73,7 @@ collection_instances {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 2.0
   }
   rotation {
     x: 0.0

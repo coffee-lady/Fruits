@@ -3,15 +3,30 @@ local window_service = require('modules.window_service.module_window_service')
 local zones_module = require('modules.spawn_objects_zones.module_spawn_objects_zones')
 local random_service = require('modules.random_service.random_service')
 
+local Spawn_Objects_Zone = require('models.spawn_objects_zone.model_spawn_objects_zone')
+local zones_config = require('config.config_app').spawn_objects.zones
+
 local factory_config = config.spawn_objects.factory
 local object_config = config.spawn_objects.object
 local pack_config = config.spawn_objects.pack
+local zones_config = config.spawn_objects.zones
 
 local random = random_service.random
 local random_arr = random_service.random_arr
 
 go.property('factory_block', msg.url())
 go.property('spawn_obj_image', '/src/assets/atalses/spawn_objects.atlas')
+
+local function init_zones(self)
+	local function init_zone(config)
+    	return Spawn_Objects_Zone:new(config.spawn_angles, config.paddings, config.rel_coords_start, config.rel_coords_end)
+	end
+
+	self.zones = {}
+	for i = 1, #zones_config.zones do
+		self.zones[#self.zones + 1] = init_zone(zones_config.zones[i])
+	end
+end
 
 local function init_pack(self, dt)
 	local min_pack, max_pack = pack_config:get_sizes()
@@ -25,7 +40,7 @@ local function init_pack(self, dt)
 
 		pack[#pack + 1] = obj
 	end
-	zones_module.set_pack_objects_prop(pack)
+	zones_module.set_pack_objects_prop(self.zones, pack)
 	for i = 1, #pack do
 		local obj = pack[i]
 		self.objects[#self.objects + 1] = obj
@@ -34,15 +49,18 @@ local function init_pack(self, dt)
 end
 
 local function update_objects(self, dt)
-	local min_x, min_y = window_service:get_coords()
+	local min_x, min_y, max_x, max_y = window_service:get_coords()
 
 	for i = 1, #self.objects do
 		local obj = self.objects[i]
 
 		if obj.id then
+			if obj.pos.y >= max_y - max_y * zones_config.top_padding then
+				obj.speed.y = - factory_config.gravity
+			end
+			obj.speed.y = obj.speed.y - factory_config.gravity
 			obj.pos.x = obj.pos.x + obj.speed.x * dt
 			obj.pos.y = obj.pos.y + obj.speed.y * dt
-			obj.speed.y = obj.speed.y - factory_config.gravity
 			go.set_position(obj.pos, obj.id)
 		else
 			obj.timer = obj.timer - dt
@@ -57,7 +75,7 @@ local function update_objects(self, dt)
 	for i = 1, #self.objects do
 		local obj = self.objects[i]
 
-		if obj and (obj.pos.y < min_y) then
+		if obj and obj.pos.y < min_y then
 			go.delete(obj.id)
 			table.remove(self.objects, i)
 		end
@@ -77,6 +95,7 @@ end
 function update(self, dt)
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
+		if not self.zones then init_zones(self) end
 		init_pack(self, dt)
 	end
 	update_objects(self, dt)

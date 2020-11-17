@@ -7,15 +7,9 @@ local window_service = {
 }
 
 function window_service:update()
-    -- self.start_coords = rendercam.screen_to_world_2d(0, 0, false)
-    -- self.end_coords = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, false)
-    -- self.sizes = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, true)
-
-    -- print(self.sizes)
-    local window_coords = rendercam.window
-    self.start_coords = vmath.vector3(-window_coords.x / 2, -window_coords.y / 2, 0)
-    self.end_coords = vmath.vector3(window_coords.x / 2, window_coords.y / 2, 0)
-    self.sizes.x, self.sizes.y = window_coords.x, window_coords.y
+    self.start_coords = rendercam.screen_to_world_2d(0, 0, false)
+    self.end_coords = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, false)
+    self.sizes = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, true)
 end
 
 function window_service:get_sizes()
