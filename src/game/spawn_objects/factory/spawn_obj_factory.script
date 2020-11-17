@@ -34,7 +34,7 @@ local function init_pack(self, dt)
 end
 
 local function update_objects(self, dt)
-	local min_x, min_y, max_x, max_y = window_service:get_coords()
+	local min_x, min_y = window_service:get_coords()
 
 	for i = 1, #self.objects do
 		local obj = self.objects[i]

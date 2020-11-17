@@ -6,17 +6,6 @@ local window_service = {
     sizes = {}
 }
 
--- local function window_callback(self, event)
---     if event == window.WINDOW_EVENT_RESIZED then
---         self:update()
---     end
--- end
-
--- function window_service:init()
---     self:update()
---     window.set_listener(window_callback)
--- end
-
 function window_service:update()
     -- self.start_coords = rendercam.screen_to_world_2d(0, 0, false)
     -- self.end_coords = rendercam.screen_to_world_2d(rendercam.window.x, rendercam.window.y, false)

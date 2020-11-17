@@ -3,7 +3,7 @@ local zones_config = {
         spawn_angles = { 30, 60 },
         paddings = { 
             x = 0,
-            y = 0.2
+            y = 0.3
         },
     },
 
@@ -19,7 +19,7 @@ local zones_config = {
         spawn_angles = { 120, 150 },
         paddings = { 
             x = 0,
-            y = 0.2
+            y = 0.3
         },
     },
 }
