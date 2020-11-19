@@ -1,10 +1,7 @@
-local libs = {
-    spawn_objects = {
-        object = {
-            animation = require('src.libs.spawn_obj_animation'),
-            swipe = require('src.libs.spawn_obj_swipe'),
-        }
-    }
+local Libs = {
+    SpawnObjects = require('src.libs.lib_spawn_objects'),
+    Swipe = require('src.libs.lib_swipe'),
+    Zones = require('src.libs.libs_zones')
 }
 
-return libs
+return Libs

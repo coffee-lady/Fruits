@@ -1,6 +1,6 @@
 local swipe_config = {
-    min_length = 200,
-    max_length = 250,
+    min_length = 50,
+    max_idle_time = 1,
     colors = {
         ['sprite_1'] = vmath.vector4(1, 0.82, 0.12, 1),
         ['sprite_2'] = vmath.vector4(0.18, 0.09, 0.31, 1),

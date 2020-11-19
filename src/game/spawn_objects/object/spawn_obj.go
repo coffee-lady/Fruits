@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "swipe_effect"
-  component: "/src/effects/spawn_obj.particlefx"
+  component: "/src/game/effects/spawn_obj.particlefx"
   position {
     x: 0.0
     y: 0.0

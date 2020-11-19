@@ -1,114 +1,43 @@
-local config = require('src.config.config_app')
-local window_service = require('src.modules.window_service.module_window_service')
-local zones_module = require('src.modules.spawn_objects_zones.module_spawn_objects_zones')
-local random_service = require('src.modules.random_service.random_service')
+local Libs = require('src.libs.libs')
+local WindowService = require('src.services.window_service.module_window_service')
 
-local Spawn_Objects_Zone = require('src.models.model_spawn_objects_zone')
-
-local zones_config = config.spawn_objects.zones
-local factory_config = config.spawn_objects.factory
-local object_config = config.spawn_objects.object
-local pack_config = config.spawn_objects.pack
-local zones_config = config.spawn_objects.zones
-
-local random = random_service.random
-local random_arr = random_service.random_arr
+local SpawnObjectsLib = Libs.SpawnObjects
+local ZonesLib = Libs.Zones
 
 go.property('factory_block', msg.url())
 go.property('spawn_obj_image', '/src/assets/atalses/spawn_objects.atlas')
 
-local function init_zones(self)
-	local function init_zone(config)
-    	return Spawn_Objects_Zone:new(config.spawn_angles, config.paddings, config.rel_coords_start, config.rel_coords_end)
-	end
-
-	self.zones = {}
-	for i = 1, #zones_config.zones do
-		self.zones[#self.zones + 1] = init_zone(zones_config.zones[i])
-	end
-end
-
-local function init_pack(self, dt)
-	local min_pack, max_pack = pack_config:get_sizes()
-	local size = random(min_pack, max_pack)
-
-	local pack = {}
-	for i = 1, size do
-		local obj = {
-			pos = vmath.vector3(),
-		}
-
-		pack[#pack + 1] = obj
-	end
-	zones_module.set_pack_objects_prop(self.zones, pack)
-	for i = 1, #pack do
-		local obj = pack[i]
-		self.objects[#self.objects + 1] = obj
-	end
-	self.timer = pack.timer + random_arr(factory_config.interval_bounds)
-end
-
-local function update_objects(self, dt)
-	local min_x, min_y, max_x, max_y = window_service:get_coords()
-
-	for i = 1, #self.objects do
-		local obj = self.objects[i]
-
-		if obj.id then
-			if obj.pos.y >= max_y - max_y * zones_config.top_padding then
-				obj.speed.y = - factory_config.gravity
-			end
-			obj.speed.y = obj.speed.y - factory_config.gravity
-			obj.pos.x = obj.pos.x + obj.speed.x * dt
-			obj.pos.y = obj.pos.y + obj.speed.y * dt
-			go.set_position(obj.pos, obj.id)
-		else
-			obj.timer = obj.timer - dt
-			if obj.timer <= 0 then
-				local scale = random_arr(object_config.scale_bounds)
-				obj.id = factory.create(self.factory_block, obj.pos, nil, nil, scale)
-			end
-		end
-	end
-
-	for i = 1, #self.objects do
-		local obj = self.objects[i]
-
-		if obj and obj.pos.y < min_y then
-			go.delete(obj.id)
-			table.remove(self.objects, i)
-		end
-	end
-end
-
-local function set_timer(self)
-	local min_interval, max_interval = factory_config:get_interval_bounds()
-	self.timer = random(min_interval, max_interval)
+local function update_init(self)
+	SpawnObjectsLib:init()
+	ZonesLib:init()
+	self.zones = ZonesLib:create_zones()
 end
 
 function init(self)
-	set_timer(self)
-	self.objects = {}
+	WindowService:init(function ()
+		update_init(self)
+	end)
+
+	self.timer = 0
 end
 
 function update(self, dt)
+	if not self.zones then return end
+
+	SpawnObjectsLib:update_positions(self.factory_block, dt)
+
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
-		if not self.zones then init_zones(self) end
-		init_pack(self, dt)
+		self.timer = SpawnObjectsLib:create_pack(self.zones, self.factory_block)
 	end
-	update_objects(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash('delete_swiped_obj') then
-		for i = 1, #self.objects do
-			local obj = self.objects[i]
+	if message_id == hash('window_update') then
+		update_init(self)
+	end
 
-			if obj and obj.id == message.id then
-				go.delete(message.id)
-				table.remove(self.objects, i)
-			end
-		end
+	if message_id == hash('delete_swiped_obj') then
+		SpawnObjectsLib:delete_object(message.id)
 	end
 end

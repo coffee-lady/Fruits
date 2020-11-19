@@ -14,7 +14,7 @@ emitters {
     z: 0.0
     w: 1.0
   }
-  tile_source: "/src/assets/atlases/spawn_obj_particlefx.atlas"
+  tile_source: "/src/assets/atlases/spawn_objects.atlas"
   animation: "blot"
   material: "/src/assets/materials/spawn_obj_particlefx.material"
   blend_mode: BLEND_MODE_ALPHA
@@ -362,7 +362,7 @@ emitters {
     z: 0.0
     w: 1.0
   }
-  tile_source: "/src/assets/atlases/spawn_obj_particlefx.atlas"
+  tile_source: "/src/assets/atlases/spawn_objects.atlas"
   animation: "particle"
   material: "/src/assets/materials/spawn_obj_particlefx.material"
   blend_mode: BLEND_MODE_ALPHA
