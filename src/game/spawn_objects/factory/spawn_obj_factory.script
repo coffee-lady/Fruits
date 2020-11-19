@@ -1,11 +1,11 @@
-local config = require('config.config_app')
-local window_service = require('modules.window_service.module_window_service')
-local zones_module = require('modules.spawn_objects_zones.module_spawn_objects_zones')
-local random_service = require('modules.random_service.random_service')
+local config = require('src.config.config_app')
+local window_service = require('src.modules.window_service.module_window_service')
+local zones_module = require('src.modules.spawn_objects_zones.module_spawn_objects_zones')
+local random_service = require('src.modules.random_service.random_service')
 
-local Spawn_Objects_Zone = require('models.spawn_objects_zone.model_spawn_objects_zone')
-local zones_config = require('config.config_app').spawn_objects.zones
+local Spawn_Objects_Zone = require('src.models.model_spawn_objects_zone')
 
+local zones_config = config.spawn_objects.zones
 local factory_config = config.spawn_objects.factory
 local object_config = config.spawn_objects.object
 local pack_config = config.spawn_objects.pack
@@ -66,8 +66,7 @@ local function update_objects(self, dt)
 			obj.timer = obj.timer - dt
 			if obj.timer <= 0 then
 				local scale = random_arr(object_config.scale_bounds)
-				local anim = { anim_to_play = hash(math.random(object_config.sprites_number)) }
-				obj.id = factory.create(self.factory_block, obj.pos, nil, anim, scale)
+				obj.id = factory.create(self.factory_block, obj.pos, nil, nil, scale)
 			end
 		end
 	end
@@ -99,4 +98,17 @@ function update(self, dt)
 		init_pack(self, dt)
 	end
 	update_objects(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash('delete_swiped_obj') then
+		for i = 1, #self.objects do
+			local obj = self.objects[i]
+
+			if obj and obj.id == message.id then
+				go.delete(message.id)
+				table.remove(self.objects, i)
+			end
+		end
+	end
 end

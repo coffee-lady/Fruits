@@ -1,5 +1,5 @@
-local config = require('config.config_app')
-local window_service = require('modules.window_service.module_window_service')
+local config = require('src.config.config_app')
+local window_service = require('src.modules.window_service.module_window_service')
 
 local zones_config = config.spawn_objects.zones
 

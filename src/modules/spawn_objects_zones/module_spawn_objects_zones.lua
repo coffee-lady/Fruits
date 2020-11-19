@@ -1,6 +1,6 @@
-local config = require('config.config_app')
-local window_service = require('modules.window_service.module_window_service')
-local random_service = require('modules.random_service.random_service')
+local config = require('src.config.config_app')
+local window_service = require('src.modules.window_service.module_window_service')
+local random_service = require('src.modules.random_service.random_service')
 
 local obj_config = config.spawn_objects.object
 local pack_config = config.spawn_objects.pack

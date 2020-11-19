@@ -1,0 +1,35 @@
+local config = require('src.config.config_app')
+local libs = require('src.libs.libs')
+local random_service = require('src.modules.random_service.random_service')
+
+local object_config = config.spawn_objects.object
+local swipe_config = config.spawn_objects.swipe
+
+local anim_lib = libs.spawn_objects.object.animation
+local swipe_lib = libs.spawn_objects.object.swipe
+
+local random = random_service.random
+local random_arr = random_service.random_arr
+
+go.property('anim_to_play', hash(''))
+
+function init(self)
+	msg.post('.', 'acquire_input_focus')
+
+	self.anim_to_play = 'sprite_' .. math.random(object_config.sprites_number)
+	msg.post('#sprite', 'play_animation', { id = hash(self.anim_to_play) })
+
+	anim_lib:animate_scale()
+	anim_lib:animate_rotation()
+end
+
+local start_coords
+local end_coords
+
+function on_input(self, action_id, action)
+	if action_id == hash('spawn_obj_swipe') then
+		swipe_lib:on_swipe(self, action, function ()
+			msg.post(msg.url('/spawn_objects/factory#script'), 'delete_swiped_obj', { id = go.get_id() })
+		end)
+	end
+end

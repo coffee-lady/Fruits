@@ -14,7 +14,7 @@ instances {
     w: 1.0
   }
   component_properties {
-    id: "factory"
+    id: "script"
     properties {
       id: "factory_block"
       value: "#cube_factory"

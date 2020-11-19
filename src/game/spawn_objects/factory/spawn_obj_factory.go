@@ -1,5 +1,5 @@
 components {
-  id: "factory"
+  id: "script"
   component: "/src/game/spawn_objects/factory/spawn_obj_factory.script"
   position {
     x: 0.0
@@ -14,14 +14,14 @@ components {
   }
   properties {
     id: "factory_block"
-    value: "#cube_factory"
+    value: "#spawn_obj_factory"
     type: PROPERTY_TYPE_URL
   }
 }
 embedded_components {
-  id: "cube_factory"
+  id: "spawn_obj_factory"
   type: "factory"
-  data: "prototype: \"/src/game/spawn_objects/spawn_obj.go\"\n"
+  data: "prototype: \"/src/game/spawn_objects/object/spawn_obj.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

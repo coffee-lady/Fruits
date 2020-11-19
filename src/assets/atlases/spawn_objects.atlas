@@ -1,81 +1,81 @@
 images {
-  image: "/src/assets/images/spawn_objects/1.png"
+  image: "/src/assets/images/spawn_objects/sprite_1.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/10.png"
+  image: "/src/assets/images/spawn_objects/sprite_10.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/11.png"
+  image: "/src/assets/images/spawn_objects/sprite_11.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/12.png"
+  image: "/src/assets/images/spawn_objects/sprite_12.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/13.png"
+  image: "/src/assets/images/spawn_objects/sprite_13.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/14.png"
+  image: "/src/assets/images/spawn_objects/sprite_14.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/15.png"
+  image: "/src/assets/images/spawn_objects/sprite_15.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/16.png"
+  image: "/src/assets/images/spawn_objects/sprite_16.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/17.png"
+  image: "/src/assets/images/spawn_objects/sprite_17.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/18.png"
+  image: "/src/assets/images/spawn_objects/sprite_18.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/19.png"
+  image: "/src/assets/images/spawn_objects/sprite_19.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/2.png"
+  image: "/src/assets/images/spawn_objects/sprite_2.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/20.png"
+  image: "/src/assets/images/spawn_objects/sprite_20.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/3.png"
+  image: "/src/assets/images/spawn_objects/sprite_3.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/4.png"
+  image: "/src/assets/images/spawn_objects/sprite_4.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/5.png"
+  image: "/src/assets/images/spawn_objects/sprite_5.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/6.png"
+  image: "/src/assets/images/spawn_objects/sprite_6.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/7.png"
+  image: "/src/assets/images/spawn_objects/sprite_7.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/8.png"
+  image: "/src/assets/images/spawn_objects/sprite_8.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/9.png"
+  image: "/src/assets/images/spawn_objects/sprite_9.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

@@ -1,5 +1,6 @@
 local obj_config = {
     sprites_number = 9,
+    collision_object_radius = 35,
 
     speed_bounds = {
         x = { 700, 850 },
