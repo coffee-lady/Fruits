@@ -23,9 +23,6 @@ function init(self)
 	anim_lib:animate_rotation()
 end
 
-local start_coords
-local end_coords
-
 function on_input(self, action_id, action)
 	if action_id == hash('spawn_obj_swipe') then
 		swipe_lib:on_swipe(self, action, function ()
