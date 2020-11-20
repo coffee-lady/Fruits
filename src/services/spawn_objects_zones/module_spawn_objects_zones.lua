@@ -3,7 +3,7 @@ local WindowService = require('src.services.window_service.module_window_service
 local random_service = require('src.services.random_service.random_service')
 
 local obj_config = config.spawn_objects.object
-local pack_config = config.spawn_objects.pack
+local PackConfig = config.spawn_objects.pack
 local random = random_service.random
 local random_arr = random_service.random_arr
 
@@ -52,7 +52,7 @@ function ZonesService:set_pack_objects_prop(zones, pack)
 
         set_object_params(zone, obj, zone.spawn_angles, coords_start, coords_end)
 
-        obj.timer = random_arr(pack_config.timer_bounds) + timer
+        obj.timer = random_arr(PackConfig.timer_bounds) + timer
         timer = timer + obj.timer
     end
 

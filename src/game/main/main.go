@@ -1,5 +1,5 @@
 components {
-  id: "main"
+  id: "gui"
   component: "/src/game/main/main.gui"
   position {
     x: 0.0

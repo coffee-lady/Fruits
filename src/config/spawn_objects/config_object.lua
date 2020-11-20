@@ -1,6 +1,6 @@
 local obj_config = {
     sprites_number = 9,
-    collision_object_radius = 35,
+    collision_object_radius = 50,
 
     speed_bounds = {
         x = { 700, 850 },
@@ -13,6 +13,8 @@ local obj_config = {
 
     rotation_angle = 0.2,
     rotation_duration_bounds = { 3, 6 },
+
+    score_bounds = { 100, 200 }
 }
 
 function obj_config:get_speed_bounds() return self.speed_bounds[1], self.speed_bounds[2] end

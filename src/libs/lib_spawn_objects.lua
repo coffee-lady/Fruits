@@ -3,15 +3,15 @@ local WindowService = require('src.services.window_service.module_window_service
 local zones_module = require('src.services.spawn_objects_zones.module_spawn_objects_zones')
 local random_service = require('src.services.random_service.random_service')
 
-local object_config = config.spawn_objects.object
-local factory_config = config.spawn_objects.factory
+local ObjectConfig = config.spawn_objects.object
+local FactoryConfig = config.spawn_objects.factory
 local zones_config = config.spawn_objects.zones
-local pack_config = config.spawn_objects.pack
+local PackConfig = config.spawn_objects.pack
 
 local random = random_service.random
 local random_arr = random_service.random_arr
 
-local min_pack, max_pack = pack_config:get_sizes()
+local min_pack, max_pack = PackConfig:get_sizes()
 local start_coords, end_coords
 
 local SpawnObjectsLib = {
@@ -43,20 +43,20 @@ function SpawnObjectsLib:create_pack(zones, factory_id)
 		self.objects[#self.objects + 1] = obj
 	end
 
-	local timer_next = pack.timer + random_arr(factory_config.interval_bounds)
+	local timer_next = pack.timer + random_arr(FactoryConfig.interval_bounds)
 	return timer_next
 end
 
 function SpawnObjectsLib:set_object_params(obj)
-	local speed_x = random_arr(object_config.speed_bounds.x) * math.cos(obj.angle)
-	local speed_y = random_arr(object_config.speed_bounds.y) * math.sin(obj.angle)
+	local speed_x = random_arr(ObjectConfig.speed_bounds.x) * math.cos(obj.angle)
+	local speed_y = random_arr(ObjectConfig.speed_bounds.y) * math.sin(obj.angle)
 
 	obj.speed = vmath.vector3(speed_x, speed_y, 0)
-	obj.scale = random_arr(object_config.scale_bounds)
+	obj.scale = random_arr(ObjectConfig.scale_bounds)
 end
 
 function SpawnObjectsLib:set_pack_timer(pack, callback)
-	local delay = pack.timer + random_arr(factory_config.interval_bounds)
+	local delay = pack.timer + random_arr(FactoryConfig.interval_bounds)
 	timer.delay(delay, false, callback())
 end
 
@@ -66,10 +66,10 @@ function SpawnObjectsLib:update_positions(factory_id, dt)
 		obj.timer = obj.timer - dt
 		if obj.id then
 			if obj.pos.y >= end_coords.y - end_coords.y * zones_config.top_padding then
-				obj.speed.y = - factory_config.gravity
+				obj.speed.y = - FactoryConfig.gravity
 			end
 
-			obj.speed.y = obj.speed.y - factory_config.gravity
+			obj.speed.y = obj.speed.y - FactoryConfig.gravity
 			obj.pos.x = obj.pos.x + obj.speed.x * dt
 			obj.pos.y = obj.pos.y + obj.speed.y * dt
 
@@ -102,13 +102,13 @@ end
 
 function SpawnObjectsLib:animate_scale()
 	local scale = go.get('#sprite', 'scale')
-	scale = scale - random_arr(object_config.d_scale_bounds) * scale
-	go.animate(go.get_id(), 'scale', go.PLAYBACK_ONCE_FORWARD, scale, go.EASING_LINEAR, random_arr(object_config.scale_duration_bounds))
+	scale = scale - random_arr(ObjectConfig.d_scale_bounds) * scale
+	go.animate(go.get_id(), 'scale', go.PLAYBACK_ONCE_FORWARD, scale, go.EASING_LINEAR, random_arr(ObjectConfig.scale_duration_bounds))
 end
 
 function SpawnObjectsLib:animate_rotation()
 	local rotation_angle = math.random() >= 0.5 and 360 or -360
-	go.animate(go.get_id(), 'euler.z', go.PLAYBACK_LOOP_FORWARD, rotation_angle, go.EASING_LINEAR, random_arr(object_config.rotation_duration_bounds))
+	go.animate(go.get_id(), 'euler.z', go.PLAYBACK_LOOP_FORWARD, rotation_angle, go.EASING_LINEAR, random_arr(ObjectConfig.rotation_duration_bounds))
 end
 
 return SpawnObjectsLib

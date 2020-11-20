@@ -32,7 +32,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/src/assets/atlases/spawn_objects.atlas\"\n"
-  "default_animation: \"sprite_14\"\n"
+  "default_animation: \"black-berry-light\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

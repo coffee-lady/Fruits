@@ -1,0 +1,15 @@
+local Libs = require('src.libs.libs')
+local Constants = require('src.constants.constants')
+
+local GuiUpdateLib = Libs.GuiUpdate
+local GuiMsg = Constants.messages.gui
+
+function init(self)
+	msg.post('.', 'acquire_input_focus')
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash(GuiMsg.set_score) then
+		GuiUpdateLib:update_text('score', message.score)
+	end
+end

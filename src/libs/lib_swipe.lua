@@ -1,8 +1,10 @@
 local rendercam = require('rendercam.rendercam')
 local config = require('src.config.config_app')
+local Constants = require('src.constants.constants')
 
-local object_config = config.spawn_objects.object
+local ObjectConfig = config.spawn_objects.object
 local swipe_config = config.spawn_objects.swipe
+local SpawnObjConstants = Constants.spawn_obj
 
 local SwipeLib = {
     start_coords = vmath.vector3(0, 0, 0),
@@ -50,13 +52,14 @@ function SwipeLib:on_swipe(obj, action, callback)
 
     self.end_coords.x, self.end_coords.y = action.screen_x, action.screen_y
 
-    local is_swipe_throw_object = is_action_in_segment(action, self.obj_pos, object_config.collision_object_radius)
-    local swipe_length = self:get_swipe_length(self.start_coords, self.end_coords)
+    local is_swipe_throw_object = is_action_in_segment(action, self.obj_pos, ObjectConfig.collision_object_radius)
+    -- local swipe_length = self:get_swipe_length(self.start_coords, self.end_coords)
 
-    if is_swipe_throw_object and swipe_length >= swipe_config.min_length then
+    --  and swipe_length >= swipe_config.min_length
+    if is_swipe_throw_object then
         particlefx.play('#swipe_effect')
-        particlefx.set_constant('#swipe_effect', 'splashes', 'tint', swipe_config.colors[obj.anim_to_play])
-        particlefx.set_constant('#swipe_effect', 'blots', 'tint', swipe_config.colors[obj.anim_to_play])
+        particlefx.set_constant('#swipe_effect', 'splashes', 'tint', SpawnObjConstants.sprite_colors[obj.anim_to_play])
+        particlefx.set_constant('#swipe_effect', 'blots', 'tint', SpawnObjConstants.sprite_colors[obj.anim_to_play])
 
         self:clear_coords()
 

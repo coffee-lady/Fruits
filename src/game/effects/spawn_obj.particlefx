@@ -333,7 +333,7 @@ emitters {
       key: MODIFIER_KEY_MAGNITUDE
       points {
         x: 0.0
-        y: 2.0
+        y: 6.0
         t_x: 1.0
         t_y: 0.0
       }
