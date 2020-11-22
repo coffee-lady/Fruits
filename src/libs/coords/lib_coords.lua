@@ -17,6 +17,14 @@ function CoordsLib:is_point_in_circle(point, circle_coords, radius)
     return false
 end
 
+function CoordsLib:set_padd_start(padding, min, max)
+    return min + padding * (max - min)
+end
+
+function CoordsLib:set_padd_end(padding, min, max)
+    return max - padding * (max - min)
+end
+
 function CoordsLib:get_vector_length(start_coords, end_coords)
     local dx = math.abs(start_coords.x - end_coords.x)
     local dy = math.abs(start_coords.y - end_coords.y)

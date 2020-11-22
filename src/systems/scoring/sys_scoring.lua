@@ -14,4 +14,9 @@ function ScoringSystem:on_swiping_object(obj)
     self.score = ScoringModel:update_score(obj, self.score, self.points)
 end
 
+function ScoringSystem:zero_out()
+    self.score = 0
+    ScoringModel:zero_out()
+end
+
 return ScoringSystem

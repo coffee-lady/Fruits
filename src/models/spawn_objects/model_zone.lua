@@ -1,6 +1,9 @@
-local config = require('src.config.config')
+local Config = require('src.config.config')
+local Libs = require('src.libs.libs')
 
-local zones_config = config.spawn_objects.zones
+local CoordsLib = Libs.coords
+
+local zones_config = Config.spawn_objects.zones
 
 local ZoneModel = {}
 
@@ -22,8 +25,8 @@ function ZoneModel:get_coords_start(screen_coords)
     local coords_start = vmath.vector3(0, 0, 0)
     local min_coords, max_coords = screen_coords[1], screen_coords[2]
 
-    coords_start.x = min_coords.x + self.rel_coords_start.x * (max_coords.x - min_coords.x)
-    coords_start.y = min_coords.y + self.rel_coords_start.y * (max_coords.y - min_coords.y)
+    coords_start.x = CoordsLib:set_padd_start(self.rel_coords_start.x, min_coords.x, max_coords.x)
+    coords_start.y = CoordsLib:set_padd_start(self.rel_coords_start.y, min_coords.y, max_coords.y)
 
     return coords_start
 end
@@ -32,8 +35,8 @@ function ZoneModel:get_coords_end(screen_coords)
     local coords_end = vmath.vector3(0, 0, 0)
     local min_coords, max_coords = screen_coords[1], screen_coords[2]
 
-    coords_end.x = max_coords.x - self.rel_coords_end.x * (max_coords.x - min_coords.x)
-    coords_end.y = max_coords.y - self.rel_coords_end.y * (max_coords.y - min_coords.y)
+    coords_end.x = CoordsLib:set_padd_end(self.rel_coords_end.x, min_coords.x, max_coords.x)
+    coords_end.y = CoordsLib:set_padd_end(self.rel_coords_end.y, min_coords.y, max_coords.y)
 
     return coords_end
 end

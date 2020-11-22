@@ -9,6 +9,7 @@ local MessagesConstants = {
 
 MessagesConstants.gui.scoring.set = 'set_score'
 
+MessagesConstants.gui.gaming_lives.set = 'set_gaming_lives'
 MessagesConstants.gui.gaming_lives.restore = 'restore_gaming_lives'
 MessagesConstants.gui.gaming_lives.increase = 'increase_gaming_lives'
 MessagesConstants.gui.gaming_lives.decrease = 'decrease_gaming_lives'

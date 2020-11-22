@@ -1,8 +1,11 @@
 local Libs = require('src.libs.libs')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
+local Animations = require('src.game.animations.animations')
 
 local GuiSystem = require('src.systems.systems_gui')
+
+local GuiAnimation = Animations.gui
 
 local GuiService = Services.gui
 local GuiMsg = Constants.messages.gui
@@ -10,6 +13,7 @@ local GuiMsg = Constants.messages.gui
 function init(self)
 	msg.post('.', 'acquire_input_focus')
 	GuiSystem:init()
+	GuiAnimation:animate_score()
 end
 
 function on_message(self, message_id, message, sender)

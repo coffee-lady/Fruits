@@ -31,14 +31,17 @@ end
 
 function SpawnSystem:update(screen_coords, dt, on_deleted_obj_callback)
     ObjectsManagerModel:update_positions(self.objects, factory_id, screen_coords[1], screen_coords[2], dt)
-    print('before', #self.objects)
+
     ObjectsManagerModel:delete_departed_objects(self.objects, screen_coords[1], on_deleted_obj_callback)
-    print('after', #self.objects)
 
 	self.timer = self.timer - dt
     if self.timer <= 0 then
         self.timer = PackModel:create(self.objects, self.zones, factory_id, screen_coords)
     end
+end
+
+function SpawnSystem:on_deleted_departed_objects(callback)
+    ObjectsManagerModel:on_deleted_departed_objects(callback)
 end
 
 function SpawnSystem:on_message(message_id, message, sender)

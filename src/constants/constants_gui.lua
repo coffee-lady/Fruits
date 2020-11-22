@@ -1,8 +1,12 @@
 local GuiConstants = {
     gaming_lives = {
         texture = 'main',
-        anim = 'player_life'
+        anim_full = 'player_life',
+        anim_empty = 'player_life_empty',
     },
+    nodes = {
+        score = 'score',
+    }
 }
 
 return GuiConstants

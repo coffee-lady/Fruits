@@ -17,6 +17,4 @@ local ObjectConfig = {
     score_bounds = { 100, 200 }
 }
 
-function ObjectConfig:get_speed_bounds() return self.speed_bounds[1], self.speed_bounds[2] end
-
 return ObjectConfig

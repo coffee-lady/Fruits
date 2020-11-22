@@ -11,12 +11,20 @@ function SpawnedObjectsSystem:init()
     SwipeSystem:init()
 end
 
-function SpawnedObjectsSystem:update(screen_coords, dt, on_deleted_obj_callback)
-    SpawnSystem:update(screen_coords, dt, on_deleted_obj_callback)
+function SpawnedObjectsSystem:update(screen_coords, dt)
+    SpawnSystem:update(screen_coords, dt)
+end
+
+function SpawnedObjectsSystem:on_deleted_departed_objects(callback)
+    SpawnSystem:on_deleted_departed_objects(callback)
 end
 
 function SpawnedObjectsSystem:on_message(message_id, message, sender)
     SpawnSystem:on_message(message_id, message, sender)
+end
+
+function SpawnedObjectsSystem:on_swiped_object(callback)
+    SwipeSystem:on_swiped_object(callback)
 end
 
 function SpawnedObjectsSystem:on_input(action_id, action, swipe_callback)

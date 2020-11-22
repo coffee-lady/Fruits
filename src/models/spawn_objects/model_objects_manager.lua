@@ -42,12 +42,16 @@ end
 function ObjectsManagerModel:delete_departed_objects(objects, min_coords, callback)
 	for i = 1, #objects do
 		local obj = objects[i]
-		if obj and obj.id and obj.pos.y <= min_coords.y then
+		if obj and obj.id and obj.pos.y < min_coords.y then
 			go.delete(obj.id)
 			table.remove(objects, i)
-			if callback then callback() print('deleted departed') end
+			if self.on_deleted_departed_objects then self.on_deleted_departed_objects() end
 		end
 	end
+end
+
+function ObjectsManagerModel:on_deleted_departed_objects(callback)
+	self.on_deleted_departed_objects = callback
 end
 
 return ObjectsManagerModel

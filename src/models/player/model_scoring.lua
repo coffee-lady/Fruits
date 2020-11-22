@@ -23,4 +23,8 @@ function ScoringModel:update_score(obj, score, points)
     return score
 end
 
+function ScoringModel:zero_out()
+    msg.post(msg.url(ComponentsUrls.main_gui), GuiMsg.scoring.set, { score = 0 })
+end
+
 return ScoringModel

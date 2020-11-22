@@ -1,3 +1,0 @@
-local GamingLives = {}
-
-return GamingLives
