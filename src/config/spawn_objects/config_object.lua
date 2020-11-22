@@ -1,4 +1,4 @@
-local obj_config = {
+local ObjectConfig = {
     sprites_number = 9,
     collision_object_radius = 50,
 
@@ -17,6 +17,6 @@ local obj_config = {
     score_bounds = { 100, 200 }
 }
 
-function obj_config:get_speed_bounds() return self.speed_bounds[1], self.speed_bounds[2] end
+function ObjectConfig:get_speed_bounds() return self.speed_bounds[1], self.speed_bounds[2] end
 
-return obj_config
+return ObjectConfig

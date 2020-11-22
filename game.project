@@ -18,5 +18,5 @@ dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip
 write_log = 1
 
 [input]
-game_binding = /src/input/game.input_bindingc
+game_binding = /src/game/input/game.input_bindingc
 

@@ -1,4 +1,4 @@
-local spawn_objects_config = {
+local SpawnObjectsConfig = {
     object = require('src.config.spawn_objects.config_object'),
     factory = require('src.config.spawn_objects.config_factory'),
     zones = require('src.config.spawn_objects.config_zones'),
@@ -6,4 +6,4 @@ local spawn_objects_config = {
     swipe = require('src.config.spawn_objects.config_swipe'),
 }
 
-return spawn_objects_config
+return SpawnObjectsConfig

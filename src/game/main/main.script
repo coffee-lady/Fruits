@@ -1,0 +1,18 @@
+local Systems = require('src.systems.systems')
+
+function init(self)
+	msg.post('.', 'acquire_input_focus')
+	Systems:init()
+end
+
+function update(self, dt)
+	Systems:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	Systems:on_message(message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+	Systems:on_input(action_id, action)
+end

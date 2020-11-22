@@ -1,0 +1,3 @@
+local MessageService = {}
+
+return MessageService

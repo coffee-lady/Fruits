@@ -1,40 +1,33 @@
-local config = require('src.config.config_app')
-local random_service = require('src.services.random_service.random_service')
 local Libs = require('src.libs.libs')
+local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 
-local SpawnObjectsLib = Libs.SpawnObjects
-local SwipeLib = Libs.Swipe
 local SpawnObjConstants = Constants.spawn_obj
-local ScoringLib = Libs.Scoring
 
-local ObjectConfig = config.spawn_objects.object
+local ObjectConfig = Config.spawn_objects.object
+local RandomLib = Libs.random
 
-local random = random_service.random
-local random_arr = random_service.random_arr
+local Msg = Constants.messages
+
+local random = RandomLib.random
 
 go.property('anim_to_play', hash(''))
 
 function init(self)
-	msg.post('.', 'acquire_input_focus')
 
-	ScoringLib:init()
-	self.anim_to_play = SpawnObjConstants.sprites_ids[math.random(#SpawnObjConstants.sprites_ids)]
-
-	local sprite_id = SpawnObjConstants.sprites[self.anim_to_play]
-	msg.post('#sprite', 'play_animation', { id = hash(sprite_id) })
-
-	SpawnObjectsLib:animate_scale()
-	SpawnObjectsLib:animate_rotation()
-
-	SwipeLib:init()
 end
 
-function on_input(self, action_id, action)
-	if action_id == hash('spawn_obj_swipe') then
-		SwipeLib:on_swipe(self, action, function ()
-			msg.post(msg.url('/spawn_objects_factory#script'), 'delete_swiped_obj', { id = go.get_id() })
-			ScoringLib:update_score(self.anim_to_play)
-		end)
+function on_message(self, message_id, message, sender)
+	if message_id == hash(Msg.spawned_object.play_swipe_animation) then
+		particlefx.play('#swipe_effect')
+        particlefx.set_constant('#swipe_effect', 'splashes', 'tint', SpawnObjConstants.sprite_colors[self.anim_to_play])
+        particlefx.set_constant('#swipe_effect', 'blots', 'tint', SpawnObjConstants.sprite_colors[self.anim_to_play])
+	end
+
+	if message_id == hash(Msg.spawned_object.set_play_anim) then
+		self.anim_to_play = message.anim_to_play
+
+		local sprite_id = SpawnObjConstants.sprites[self.anim_to_play]
+		msg.post('#sprite', 'play_animation', { id = hash(sprite_id) })
 	end
 end
