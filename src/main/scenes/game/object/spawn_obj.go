@@ -1,6 +1,6 @@
 components {
   id: "spawn_obj"
-  component: "/src/game/spawn_objects/object/spawn_obj.script"
+  component: "/src/main/scenes/game/object/spawn_obj.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "swipe_effect"
-  component: "/src/game/animations/spawned_object/particles.particlefx"
+  component: "/src/main/animations/spawned_object/particles.particlefx"
   position {
     x: 0.0
     y: 0.0

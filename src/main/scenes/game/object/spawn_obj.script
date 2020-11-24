@@ -1,7 +1,7 @@
 local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
-local Animations = require('src.game.animations.animations')
+local Animations = require('src.main.animations.animations')
 
 local SpawnObjConstants = Constants.spawn_obj
 

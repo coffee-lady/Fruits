@@ -1,7 +1,7 @@
 embedded_components {
   id: "spawn_obj_factory"
   type: "factory"
-  data: "prototype: \"/src/game/spawn_objects/object/spawn_obj.go\"\n"
+  data: "prototype: \"/src/main/scenes/game/object/spawn_obj.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

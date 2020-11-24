@@ -69,7 +69,7 @@ instances {
 }
 instances {
   id: "spawn_objects_factory"
-  prototype: "/src/game/spawn_objects/factory/spawn_obj_factory.go"
+  prototype: "/src/main/scenes/game/factory/spawn_obj_factory.go"
   position {
     x: 0.0
     y: 0.0
@@ -89,7 +89,7 @@ instances {
 }
 instances {
   id: "main"
-  prototype: "/src/game/main/main.go"
+  prototype: "/src/main/main.go"
   position {
     x: 0.0
     y: 0.0

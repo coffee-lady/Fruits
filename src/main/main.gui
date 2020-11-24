@@ -1,4 +1,4 @@
-script: "/src/game/main/main.gui_script"
+script: "/src/main/main.gui_script"
 fonts {
   name: "score"
   font: "/src/assets/fonts/score.font"
@@ -46,7 +46,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "0\n"
+  ""
   font: "score"
   id: "score"
   xanchor: XANCHOR_LEFT
@@ -73,7 +74,7 @@ nodes {
   shadow_alpha: 1.0
   template_node_child: false
   text_leading: 1.0
-  text_tracking: 1.0
+  text_tracking: 0.0
 }
 layers {
   name: "layer"

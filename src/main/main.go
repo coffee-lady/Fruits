@@ -1,6 +1,6 @@
 components {
   id: "gui"
-  component: "/src/game/main/main.gui"
+  component: "/src/main/main.gui"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "main"
-  component: "/src/game/main/main.script"
+  component: "/src/main/main.script"
   position {
     x: 0.0
     y: 0.0
