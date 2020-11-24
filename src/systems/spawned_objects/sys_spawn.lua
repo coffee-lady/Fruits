@@ -9,7 +9,7 @@ local ObjectsManagerModel = Models.spawn_objects.objects_manager
 local ZoneModel = Models.spawn_objects.zone
 
 local MsgConst = Constants.messages
-local factory_id = Constants.component_urls.spawn_factory
+local factory_id = Constants.component_urls.scenes.game.factory
 
 local ZonesConfig = Config.spawn_objects.zones
 

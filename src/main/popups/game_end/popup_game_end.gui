@@ -1,4 +1,4 @@
-script: ""
+script: "/src/main/popups/game_end/popup_game_end.gui_script"
 fonts {
   name: "popup_game_end"
   font: "/src/assets/fonts/popup_game_end.font"

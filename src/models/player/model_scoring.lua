@@ -19,12 +19,12 @@ end
 
 function ScoringModel:update_score(obj, score, points)
     score = score + points[obj.anim_to_play]
-    msg.post(msg.url(ComponentsUrls.main_gui), GuiMsg.scoring.set, { score = score })
+    msg.post(msg.url(ComponentsUrls.main.gui), GuiMsg.scoring.set, { score = score })
     return score
 end
 
 function ScoringModel:zero_out()
-    msg.post(msg.url(ComponentsUrls.main_gui), GuiMsg.scoring.set, { score = 0 })
+    msg.post(msg.url(ComponentsUrls.main.gui), GuiMsg.scoring.set, { score = 0 })
 end
 
 return ScoringModel
