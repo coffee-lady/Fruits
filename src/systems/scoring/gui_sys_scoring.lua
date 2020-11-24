@@ -31,7 +31,7 @@ function GuiScoringSystem:animate_score(score_range)
     timer.delay(ScoringConfig.duration / score_range, true, function (self, handle, dt)
         elapsed_time = elapsed_time + dt
     
-        local remaining_time = math.max(ScoringConfig.duration - elapsed_time, 0)
+        local remaining_time = math.max((ScoringConfig.duration - elapsed_time) / ScoringConfig.duration, 0)
         local current_score = math.modf(new_score - remaining_time * score_range)
     
         gui.set_text(score_node, current_score)
