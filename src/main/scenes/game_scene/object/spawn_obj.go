@@ -1,6 +1,6 @@
 components {
   id: "spawn_obj"
-  component: "/src/main/scenes/game/object/spawn_obj.script"
+  component: "/src/main/scenes/game_scene/object/spawn_obj.script"
   position {
     x: 0.0
     y: 0.0
@@ -39,7 +39,7 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0

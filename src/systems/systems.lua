@@ -1,5 +1,9 @@
 local Libs = require('src.libs.libs')
 local Constants = require('src.constants.constants')
+local Services = require('src.services.services')
+
+local ScenesService = Services.scenes
+local ScenesConst = Constants.scenes
 
 local MsgConst = Constants.messages
 local ScreenLib = Libs.screen
@@ -10,12 +14,12 @@ local GamingLivesSys = require('src.systems.gaming_lives.sys_gaming_lives')
 
 local Systems = {}
 
-local initialized = false
+Systems.initialized = false
 
 function Systems:init()
     ScreenLib:init(function ()
         SpawnObjectsSys:init()
-        initialized = true
+        self.initialized = true
     end)
     ScoringSys:init()
     GamingLivesSys:init()
@@ -29,12 +33,15 @@ function Systems:init()
     end)
 
     GamingLivesSys:on_end_of_lives(function ()
-        ScoringSys:zero_out()
+        ScoringSys:on_game_over()
+        SpawnObjectsSys:on_game_over(function ()
+            ScenesService:open_popup(ScenesConst.popups.game_end, ScoringSys.score)
+        end)
     end)
 end
 
 function Systems:update(dt)
-    if not initialized then return end
+    if not self.initialized then return end
 
     SpawnObjectsSys:update({ ScreenLib:get_coords() }, dt)
 end

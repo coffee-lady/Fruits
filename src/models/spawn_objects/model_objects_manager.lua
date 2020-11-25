@@ -1,10 +1,7 @@
 local Config = require('src.config.config')
-local Constants = require('src.constants.constants')
 
 local FactoryConfig = Config.spawn_objects.factory
 local ZonesConfig = Config.spawn_objects.zones
-
-local Msg = Constants.messages
 
 local ObjectsManagerModel = {}
 
@@ -39,19 +36,19 @@ function ObjectsManagerModel:delete_object(obj_id, objects)
 	end
 end
 
-function ObjectsManagerModel:delete_departed_objects(objects, min_coords, callback)
+function ObjectsManagerModel:delete_departed_objects(objects, min_coords)
 	for i = 1, #objects do
 		local obj = objects[i]
 		if obj and obj.id and obj.pos.y < min_coords.y then
 			go.delete(obj.id)
 			table.remove(objects, i)
-			if self.on_deleted_departed_objects then self.on_deleted_departed_objects() end
+			if self.on_deleted_departed_objects then self.on_deleted_objects_callback() end
 		end
 	end
 end
 
 function ObjectsManagerModel:on_deleted_departed_objects(callback)
-	self.on_deleted_departed_objects = callback
+	self.on_deleted_objects_callback = callback
 end
 
 return ObjectsManagerModel

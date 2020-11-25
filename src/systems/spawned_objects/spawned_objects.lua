@@ -1,9 +1,6 @@
 local SwipeSystem = require('src.systems.spawned_objects.sys_swipe')
 local SpawnSystem = require('src.systems.spawned_objects.sys_spawn')
 
-local Constants = require('src.constants.constants')
-local ActionsConst = Constants.actions
-
 local SpawnedObjectsSystem = {}
 
 function SpawnedObjectsSystem:init()
@@ -21,6 +18,10 @@ end
 
 function SpawnedObjectsSystem:on_message(message_id, message, sender)
     SpawnSystem:on_message(message_id, message, sender)
+end
+
+function SpawnedObjectsSystem:on_game_over(callback)
+    SpawnSystem:on_game_over(callback)
 end
 
 function SpawnedObjectsSystem:on_swiped_object(callback)

@@ -1,16 +1,9 @@
-local Libs = require('src.libs.libs')
-local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 local Models = require('src.models.models')
 
-local SwipeConfig = Config.spawn_objects.swipe
-
 local SwipeModel = Models.spawn_objects.swipe
-local ObjectsManagerModel = Models.spawn_objects.objects_manager
 
 local ActionsConst = Constants.actions
-local MsgConst = Constants.messages
-local ComponentsUrls = Constants.component_urls
 
 local SwipeSystem = {}
 

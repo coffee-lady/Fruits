@@ -1,8 +1,5 @@
-local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
-
-local Models = require('src.models.models')
 
 local GuiMsg = Constants.messages.gui
 local GuiConst = Constants.gui

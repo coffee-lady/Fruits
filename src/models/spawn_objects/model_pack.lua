@@ -1,6 +1,5 @@
 local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
-local Constants = require('src.constants.constants')
 
 local ObjectModel = require('src.models.spawn_objects.model_object')
 

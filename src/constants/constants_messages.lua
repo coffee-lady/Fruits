@@ -5,7 +5,12 @@ local MessagesConstants = {
 	},
 	spawned_object = {},
 	screen = {},
+	scenes = {
+		game = {},
+	},
 }
+
+MessagesConstants.scenes.game.restart = 'restart_game'
 
 MessagesConstants.gui.scoring.set = 'set_score'
 

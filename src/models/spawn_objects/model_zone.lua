@@ -1,9 +1,6 @@
-local Config = require('src.config.config')
 local Libs = require('src.libs.libs')
 
 local CoordsLib = Libs.coords
-
-local zones_config = Config.spawn_objects.zones
 
 local ZoneModel = {}
 

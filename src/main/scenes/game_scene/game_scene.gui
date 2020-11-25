@@ -1,7 +1,7 @@
-script: "/src/main/main.gui_script"
+script: "/src/main/scenes/game_scene/game_scene.gui_script"
 fonts {
   name: "score"
-  font: "/src/assets/fonts/score.font"
+  font: "/src/assets/fonts/RobotoMono.font"
 }
 textures {
   name: "main"
@@ -67,7 +67,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  layer: ""
+  layer: "text"
   inherit_alpha: false
   alpha: 1.0
   outline_alpha: 1.0
@@ -77,7 +77,10 @@ nodes {
   text_tracking: 0.0
 }
 layers {
-  name: "layer"
+  name: "main"
+}
+layers {
+  name: "text"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

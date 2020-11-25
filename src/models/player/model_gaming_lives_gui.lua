@@ -3,7 +3,6 @@ local Constants = require('src.constants.constants')
 
 local GamingLivesConfig = Config.player.gaming_lives
 
-local GLMsg = Constants.messages.gui.gaming_lives
 local GuiConst = Constants.gui
 
 local NODE_SIZE = vmath.vector3(GamingLivesConfig.size, GamingLivesConfig.size, 0)
@@ -43,7 +42,6 @@ function GamingLivesGuiModel:restore()
     self.full_lives = GamingLivesConfig.max_lives
 end
 
-
 function GamingLivesGuiModel:set()
     local pos = vmath.vector3(0, 0, 0)
     pos.x = self.gui_width - self.gui_width * GamingLivesConfig.rel_pos_end.x 
@@ -62,6 +60,8 @@ function GamingLivesGuiModel:increase()
 end
 
 function GamingLivesGuiModel:decrease()
+    if self.full_lives <= 0 then return end
+
     gui.play_flipbook(self.lives_nodes[self.full_lives], ANIM_EMPTY)
     self.full_lives = self.full_lives - 1
 end

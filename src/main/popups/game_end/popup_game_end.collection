@@ -1,9 +1,9 @@
-name: "default"
+name: "popup_game_end"
 scale_along_z: 0
 embedded_instances {
   id: "popup_game_end"
   data: "components {\n"
-  "  id: \"popup_game_end\"\n"
+  "  id: \"gui\"\n"
   "  component: \"/src/main/popups/game_end/popup_game_end.gui\"\n"
   "  position {\n"
   "    x: 0.0\n"

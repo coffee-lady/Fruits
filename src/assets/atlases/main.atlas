@@ -1,5 +1,5 @@
 images {
-  image: "/src/assets/images/background/bg.jpg"
+  image: "/src/assets/images/backgrounds/game_scene.jpg"
   sprite_trim_mode: SPRITE_TRIM_MODE_5
 }
 images {
@@ -8,6 +8,10 @@ images {
 }
 images {
   image: "/src/assets/images/main gui/player_life_empty.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/src/assets/images/backgrounds/start_scene.jpg"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

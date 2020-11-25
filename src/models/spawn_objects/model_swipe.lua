@@ -39,16 +39,17 @@ function SwipeModel:on_objects_swipe(objects, action, callback)
 
             if is_swipe_throw_object and self.swipe_length >= SwipeConfig.min_length then
                 msg.post(msg.url(obj.id), MsgConst.spawned_object.play_swipe_animation)
+
                 ObjectsManagerModel:delete_object(obj.id, objects)
 
-                if self.on_swiped_object then self.on_swiped_object(obj) end
+                if self.on_swiped_object then self.on_swiped_object_callback(obj) end
             end
         end
     end
 end
 
 function SwipeModel:on_swiped_object(callback)
-    self.on_swiped_object = callback
+    self.on_swiped_object_callback = callback
 end
 
 function SwipeModel:on_swipe(action)

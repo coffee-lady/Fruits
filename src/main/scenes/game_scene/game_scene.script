@@ -1,4 +1,8 @@
 local Systems = require('src.systems.systems')
+local Constants = require('src.constants.constants')
+
+local ScenesConst = Constants.scenes
+local MsgConst = Constants.messages
 
 function init(self)
 	msg.post('.', 'acquire_input_focus')
@@ -11,6 +15,10 @@ end
 
 function on_message(self, message_id, message, sender)
 	Systems:on_message(message_id, message, sender)
+
+	if message_id == hash(MsgConst.scenes.game.restart) then
+		Systems:init()
+	end
 end
 
 function on_input(self, action_id, action)

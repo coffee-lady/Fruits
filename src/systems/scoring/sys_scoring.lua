@@ -7,15 +7,18 @@ local ScoringSystem = {}
 function ScoringSystem:init()
     self.points = {}
     self.score = 0
+    self.game_over = false
     ScoringModel:set_random_points(self.points)
 end
 
 function ScoringSystem:on_swiping_object(obj)
+    if self.game_over then return end
+
     self.score = ScoringModel:update_score(obj, self.score, self.points)
 end
 
-function ScoringSystem:zero_out()
-    self.score = 0
+function ScoringSystem:on_game_over()
+    self.game_over = true
     ScoringModel:zero_out()
 end
 

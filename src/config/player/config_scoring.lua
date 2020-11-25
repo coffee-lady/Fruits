@@ -1,5 +1,5 @@
 local ScoringConfig = {
-    duration = 2.5,
+    duration = 0.5,
 }
 
 return ScoringConfig
