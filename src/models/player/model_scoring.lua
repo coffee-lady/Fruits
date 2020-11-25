@@ -19,13 +19,13 @@ function ScoringModel:set_random_points(points)
 end
 
 function ScoringModel:update_score(obj, score, points)
-    score = score + points[obj.anim_to_play]
-    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { score = score })
-    return score
+    local new_score = score + points[obj.anim_to_play]
+    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { prev_score = score, new_score = new_score })
+    return new_score
 end
 
 function ScoringModel:zero_out()
-    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { score = 0 })
+    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { new_score = 0 })
 end
 
 return ScoringModel

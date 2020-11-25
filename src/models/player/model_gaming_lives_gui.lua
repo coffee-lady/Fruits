@@ -31,7 +31,7 @@ function GamingLivesGuiModel:create_node(pos)
 
     gui.set_xanchor(node, gui.ANCHOR_RIGHT)
     gui.set_yanchor(node, gui.ANCHOR_TOP)
-   
+
     return node
 end
 

@@ -12,8 +12,8 @@ function ScenesService:on_init(message_id, callback)
 	end
 end
 
-function ScenesService:switch_to_scene(scene_id, scene_data, callback)
-    monarch.show(scene_id, { clear = true }, scene_data, function()
+function ScenesService:switch_to_scene(scene_id, scene_data, reload, callback)
+    monarch.show(scene_id, { clear = true, reload = reload and reload or false }, scene_data, function()
         if callback then callback() end
     end)
 end

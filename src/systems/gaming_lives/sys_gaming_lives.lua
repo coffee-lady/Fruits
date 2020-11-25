@@ -1,4 +1,3 @@
-local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 
@@ -20,9 +19,9 @@ function GamingLivesSystem:on_deleted_object()
 
     if self.current_lives == 0 and self.on_end_of_lives_cb then
         self.on_end_of_lives_cb()
-    else
-        msg.post(msg.url(GameSceneGui), GuiMsg.gaming_lives.decrease)
     end
+
+    msg.post(msg.url(GameSceneGui), GuiMsg.gaming_lives.decrease)
 end
 
 function GamingLivesSystem:on_end_of_lives(callback)

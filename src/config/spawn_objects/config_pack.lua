@@ -1,5 +1,5 @@
 local PackConfig = {
-    sizes = { 3, 6 },
+    sizes = { 1, 1 },
     timer_bounds = { 1, 3 }
 }
 

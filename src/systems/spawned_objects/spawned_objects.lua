@@ -22,6 +22,7 @@ end
 
 function SpawnedObjectsSystem:on_game_over(callback)
     SpawnSystem:on_game_over(callback)
+    SwipeSystem:on_game_over()
 end
 
 function SpawnedObjectsSystem:on_swiped_object(callback)
