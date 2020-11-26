@@ -16,8 +16,9 @@ function init(self)
 
     local best_score_node = gui.get_node(SceneConst.gui_nodes.best_score)
     local app_data = DataService:get_all()
+    local best_score = app_data.game and app_data.game.best_score or 0
 
-    gui.set_text(best_score_node, 'Your best score: ' .. app_data.game.best_score)
+    gui.set_text(best_score_node, 'Your best score: ' .. best_score)
 end
 
 function on_input(self, action_id, action)
