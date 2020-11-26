@@ -7,8 +7,7 @@ local ScenesConst = Constants.scenes
 
 local DataService = Services.data
 
-local MsgConst = Constants.messages
-local ScreenLib = Libs.screen
+local ScreenService = Services.screen
 
 local SpawnObjectsSys = require('src.systems.spawned_objects.spawned_objects')
 local ScoringSys = require('src.systems.scoring.sys_scoring')
@@ -19,10 +18,7 @@ local Systems = {}
 Systems.initialized = false
 
 function Systems:init()
-    ScreenLib:init(function ()
-        SpawnObjectsSys:init()
-        self.initialized = true
-    end)
+    SpawnObjectsSys:init()
     ScoringSys:init()
     GamingLivesSys:init()
 
@@ -47,16 +43,10 @@ function Systems:init()
 end
 
 function Systems:update(dt)
-    if not self.initialized then return end
-
-    SpawnObjectsSys:update({ ScreenLib:get_coords() }, dt)
+    SpawnObjectsSys:update({ ScreenService:get_coords() }, dt)
 end
 
 function Systems:on_message(message_id, message, sender)
-    if message_id == hash(MsgConst.screen.on_update) then
-        ScreenLib:on_resize()
-    end
-
     SpawnObjectsSys:on_message(message_id, message, sender)
 end
 

@@ -1,10 +1,14 @@
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
 
+local MsgConst = Constants.messages
+
+local ScreenService = Services.screen
 local ScenesService = Services.scenes
 local ScenesConst = Constants.scenes
 
 function init(self)
+	ScreenService:init()
 	ScenesService.init()
 end
 
@@ -12,4 +16,8 @@ function on_message(self, message_id, message, sender)
 	ScenesService.on_init(message_id, function ()
 		ScenesService.switch_to_scene(ScenesConst.scenes.start, nil)
 	end)
+
+	if message_id == hash(MsgConst.screen.on_update) then
+        ScreenService:on_resize()
+    end
 end
