@@ -6,12 +6,14 @@ local Animations = require('src.main.animations.animations')
 local GuiSystem = require('src.systems.systems_gui')
 
 local GuiConst = Constants.gui
-
-local GuiService = Services.gui
 local GuiMsg = Constants.messages.gui
+
+local ScenesService = Services.scenes
+local GuiService = Services.gui
 
 function init(self)
 	msg.post('.', 'acquire_input_focus')
+
 	GuiSystem:init()
 end
 

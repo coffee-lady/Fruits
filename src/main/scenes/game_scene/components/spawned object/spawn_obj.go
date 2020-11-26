@@ -1,6 +1,6 @@
 components {
   id: "spawn_obj"
-  component: "/src/main/scenes/game_scene/object/spawn_obj.script"
+  component: "/src/main/scenes/game_scene/components/spawned object/spawn_obj.script"
   position {
     x: 0.0
     y: 0.0

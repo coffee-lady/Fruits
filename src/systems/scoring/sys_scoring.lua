@@ -1,5 +1,7 @@
 local Models = require('src.models.models')
+local Services = require('src.services.services')
 
+local DataService = Services.data
 local ScoringModel = Models.player.scoring
 
 local ScoringSystem = {}
@@ -19,6 +21,16 @@ end
 
 function ScoringSystem:on_game_over()
     self.game_over = true
+
+    local app_data = DataService:get_all()
+
+    if not app_data or not app_data.game or app_data.game and self.score > app_data.game.best_score then
+        DataService:save({
+            game = {
+                best_score = self.score
+            }
+        })
+    end
 end
 
 return ScoringSystem

@@ -6,6 +6,7 @@ local ComponentUrls = {
 ComponentUrls.scenes.start = {
     gui_nodes = {
         button_start = 'button_start',
+        best_score = 'best_score',
     }
 }
 
@@ -21,6 +22,7 @@ ComponentUrls.popups.game_end = {
         button_home = 'button_home',
         button_restart = 'button_restart',
         current_score = 'current_score',
+        best_score = 'best_score',
     }
 }
 

@@ -5,6 +5,8 @@ local Services = require('src.services.services')
 local ScenesService = Services.scenes
 local ScenesConst = Constants.scenes
 
+local DataService = Services.data
+
 local MsgConst = Constants.messages
 local ScreenLib = Libs.screen
 
@@ -35,7 +37,11 @@ function Systems:init()
     GamingLivesSys:on_end_of_lives(function ()
         ScoringSys:on_game_over()
         SpawnObjectsSys:on_game_over(function ()
-            ScenesService:open_popup(ScenesConst.popups.game_end, ScoringSys.score)
+            local app_data = DataService:get_all()
+            ScenesService.open_popup(ScenesConst.popups.game_end, {
+                score = ScoringSys.score,
+                best_score = app_data.game.best_score
+            })
         end)
     end)
 end

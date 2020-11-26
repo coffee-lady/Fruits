@@ -1,4 +1,4 @@
-script: "/src/main/scenes/game_scene/game_scene.gui_script"
+script: "/src/main/scenes/game_scene/gui/game_scene.gui_script"
 fonts {
   name: "score"
   font: "/src/assets/fonts/RobotoMono.font"

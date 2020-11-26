@@ -1,0 +1,23 @@
+local Config = require('src.config.config')
+local Services = require('src.services.services')
+
+local TransitionConf = Config.gui.popups.game_end.transition
+local ScenesTransitionsService = Services.scenes_transitions
+
+local trans = ScenesTransitionsService.transitions
+
+function init(self)
+	ScenesTransitionsService.init(self, gui.get_node('root'))
+
+	local duration = TransitionConf.duration
+	local delay = TransitionConf.delay
+
+	ScenesTransitionsService.show_in(self, trans.fade_out, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.show_out(self, trans.fade_in, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.back_in(self, trans.fade_out, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.back_out(self, trans.fade_in, gui.EASING_OUTQUAD, duration, delay)
+end
+
+function on_message(self, message_id, message, sender)
+	ScenesTransitionsService.on_message(self, message_id, message, sender)
+end

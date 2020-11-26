@@ -5,6 +5,7 @@ local Constants = {
     actions = require('src.constants.constants_actions'),
     gui = require('src.constants.constants_gui'),
     scenes = require('src.constants.constants_scenes'),
+    app = require('src.constants.constants_app'),
 }
 
 return Constants
