@@ -9,7 +9,7 @@ GuiScenesConfig.start = {
 
 GuiScenesConfig.game = {
     transition = {
-        duration = 0.5,
+        duration = 0.3,
         delay = 0,
     },
 }

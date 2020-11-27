@@ -246,7 +246,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"transition_url\"\n"
-  "    value: \"popup_game_end:/popup_game_end#transition_popup_game_end\"\n"
+  "    value: \"popup_game_end:/popup_game_end#gui\"\n"
   "    type: PROPERTY_TYPE_URL\n"
   "  }\n"
   "}\n"

@@ -13,7 +13,7 @@ local PackModel = {}
 
 function PackModel:create(objects, zones, screen_coords)
 	local pack_size = math.random(min_pack, max_pack)
-	local zone = zones[math.random(#zones)]
+	local zone = RandomLib.random_with_weights(zones)
 	local start_coords = zone:get_coords_start(screen_coords)
 	local end_coords = zone:get_coords_end(screen_coords)
     local pack = {}

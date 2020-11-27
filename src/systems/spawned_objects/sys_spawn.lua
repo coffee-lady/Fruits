@@ -14,7 +14,7 @@ local ZonesConfig = Config.spawn_objects.zones
 local SpawnSystem = {}
 
 local function create_zone(config)
-    return ZoneModel:new(config.spawn_angles, config.rel_coords_start, config.rel_coords_end)
+    return ZoneModel:new(config.spawn_angles, config.rel_coords_start, config.rel_coords_end, config.weight)
 end
 
 function SpawnSystem:init()

@@ -4,11 +4,12 @@ local CoordsLib = Libs.coords
 
 local ZoneModel = {}
 
-function ZoneModel:new(angle_bounds, rel_coords_start, rel_coords_end)
+function ZoneModel:new(angle_bounds, rel_coords_start, rel_coords_end, weight)
     local zone = {
         angle_bounds = angle_bounds,
         rel_coords_start = rel_coords_start,
         rel_coords_end = rel_coords_end,
+        weight = weight,
     }
     self.__index = self
     return setmetatable(zone, self)

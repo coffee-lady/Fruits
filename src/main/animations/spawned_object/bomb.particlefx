@@ -99,19 +99,19 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 122.89112
+      y: 55.746662
       t_x: 1.0
       t_y: 0.0
     }
     points {
-      x: 0.45190382
-      y: 17.624065
+      x: 0.33887777
+      y: 20.481276
       t_x: 0.10778415
       t_y: -0.9941743
     }
     points {
       x: 1.0
-      y: 52.60109
+      y: 38.315033
       t_x: 1.0
       t_y: 0.0
     }

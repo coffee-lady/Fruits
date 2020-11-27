@@ -1,3 +1,4 @@
+local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
 
@@ -9,6 +10,11 @@ local ActionsConst = Constants.actions
 local PopupConst = Constants.component_urls.popups.game_end
 local ComponentsUrls = Constants.component_urls
 
+local TransitionConf = Config.gui.popups.game_end.transition
+local ScenesTransitionsService = Services.scenes_transitions
+
+local trans = ScenesTransitionsService.transitions
+
 function init(self)
     msg.post(".", "acquire_input_focus")
     
@@ -18,6 +24,16 @@ function init(self)
 
     gui.set_text(current_score_node, popup_data.score)
     gui.set_text(best_score_node, popup_data.best_score)
+
+    ScenesTransitionsService.init(self, gui.get_node('root'))
+
+	local duration = TransitionConf.duration
+	local delay = TransitionConf.delay
+
+	ScenesTransitionsService.show_in(self, trans.slide_in_bottom, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.show_out(self, trans.slide_out_bottom, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.back_in(self, trans.slide_in_bottom, gui.EASING_OUTQUAD, duration, delay)
+	ScenesTransitionsService.back_out(self, trans.slide_out_bottom, gui.EASING_OUTQUAD, duration, delay)
 end
 
 function on_input(self, action_id, action)
@@ -35,5 +51,9 @@ function on_input(self, action_id, action)
 end
 
 function on_message(self, message_id, message, sender)
+	ScenesTransitionsService.on_message(self, message_id, message, sender)
+end
 
+function final(self)
+	ScenesTransitionsService.final()
 end

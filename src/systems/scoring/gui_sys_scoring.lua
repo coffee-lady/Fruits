@@ -1,8 +1,11 @@
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
+local Animations = require('src.main.animations.animations')
 
 local DataService = Services.data
+
+local ScoringAnimation = Animations.scoring
 
 local GuiMsg = Constants.messages.gui
 local SceneConst = Constants.component_urls.scenes.game
@@ -51,6 +54,7 @@ function GuiScoringSystem:animate_score(new_score)
 
         if current_score == new_score then
             timer.cancel(handle)
+            ScoringAnimation:animate_scale(self.score_node)
         end
     end)
 end

@@ -1,15 +1,9 @@
 local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
-local Constants = require('src.constants.constants')
-
-local SpawnObjConstants = Constants.spawn_obj
-local Msg = Constants.messages
 
 local ObjectConfig = Config.spawn_objects.object
-local PackConfig = Config.spawn_objects.pack
 local RandomLib = Libs.random
 
-local random = RandomLib.random
 local random_arr = RandomLib.random_arr
 
 local SpawnedObjectAnimation = {}
