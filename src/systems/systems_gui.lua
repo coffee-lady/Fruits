@@ -5,6 +5,7 @@ local GuiSystem = {}
 
 function GuiSystem:init()
     GamingLivesGuiSys:init()
+    ScoringGuiSys:init()
 end
 
 function GuiSystem:update(dt)

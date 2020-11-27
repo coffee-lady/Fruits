@@ -21,3 +21,7 @@ end
 function on_message(self, message_id, message, sender)
 	ScenesTransitionsService.on_message(self, message_id, message, sender)
 end
+
+function final(self)
+	ScenesTransitionsService.final()
+end

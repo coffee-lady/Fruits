@@ -12,14 +12,15 @@ local ObjectConfig = Config.spawn_objects.object
 local ScoringModel = {}
 
 function ScoringModel:set_random_points(points)
-    local sprites_ids = SpawnObjConstants.sprites_ids
-    for i = 1, #sprites_ids do
-        points[sprites_ids[i]] = math.random(ObjectConfig.score_bounds[1], ObjectConfig.score_bounds[2])
+    local objects = SpawnObjConstants
+
+    for _, obj  in pairs(objects) do
+        points[obj.class_id] = math.random(ObjectConfig.score_bounds[1], ObjectConfig.score_bounds[2])
     end
 end
 
 function ScoringModel:update_score(obj, score, points)
-    local new_score = score + points[obj.anim_to_play]
+    local new_score = score + points[obj.class_id]
     msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { prev_score = score, new_score = new_score })
     return new_score
 end

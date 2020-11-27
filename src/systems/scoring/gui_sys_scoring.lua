@@ -1,11 +1,24 @@
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
+local Services = require('src.services.services')
+
+local DataService = Services.data
 
 local GuiMsg = Constants.messages.gui
-local GuiConst = Constants.gui
+local SceneConst = Constants.component_urls.scenes.game
+
 local ScoringConfig = Config.player.scoring
 
 local GuiScoringSystem = {}
+
+function GuiScoringSystem:init()
+    local app_data = DataService:get_all()
+    self.best_score_node = gui.get_node(SceneConst.gui_nodes.best_score)
+    self.best_score = app_data.game and app_data.game.best_score or 0
+    self.score_node = gui.get_node(SceneConst.gui_nodes.current_score)
+
+    gui.set_text(self.best_score_node, 'Best: ' .. self.best_score)
+end
 
 function GuiScoringSystem:on_message(message_id, message, sender)
 	if message_id == hash(GuiMsg.scoring.set) then
@@ -14,13 +27,12 @@ function GuiScoringSystem:on_message(message_id, message, sender)
 end
 
 function GuiScoringSystem:animate_score(new_score)
-    local score_node = gui.get_node(GuiConst.nodes.score)
-    local prev_score = tonumber(gui.get_text(score_node))
+    local prev_score = tonumber(gui.get_text(self.score_node))
     local score_range = new_score - prev_score
     local elapsed_time = 0
 
     if score_range == 0 then
-        gui.set_text(score_node, 0)
+        gui.set_text(self.score_node, 0)
         return
     end
 
@@ -30,7 +42,12 @@ function GuiScoringSystem:animate_score(new_score)
         local remaining_time = math.max((ScoringConfig.duration - elapsed_time) / ScoringConfig.duration, 0)
         local current_score = math.modf(new_score - remaining_time * score_range)
 
-        gui.set_text(score_node, current_score)
+        if current_score > self.best_score then
+            self.best_score = current_score
+            gui.set_text(self.best_score_node, 'Best: ' .. self.best_score)
+        end
+
+        gui.set_text(self.score_node, current_score)
 
         if current_score == new_score then
             timer.cancel(handle)

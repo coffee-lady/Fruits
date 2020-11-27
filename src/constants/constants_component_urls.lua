@@ -14,6 +14,10 @@ ComponentUrls.scenes.game = {
     factory = '/game_scene#spawn_obj_factory',
     gui = '/game_scene#gui',
     root = 'game_scene:/game_scene',
+    gui_nodes = {
+        current_score = 'score',
+        best_score = 'best_score',
+    }
 }
 
 ComponentUrls.popups.game_end = {

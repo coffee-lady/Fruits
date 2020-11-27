@@ -1,7 +1,10 @@
 local Constants = require('src.constants.constants')
 local transitions = require('monarch.transitions.gui')
+local monarch = require('monarch.monarch')
+local ScreenService = require('src.services.screen.screen')
 
 local MsgConst = Constants.messages
+
 
 local ScenesTransitionsService = {}
 
@@ -21,7 +24,9 @@ ScenesTransitionsService.transitions = {
 }
 
 function ScenesTransitionsService.init(self, node)
-	self.transition = transitions.create(node)
+    self.transition = transitions.create(node)
+    monarch.add_listener(msg.url())
+    ScreenService:add_listener(msg.url())
 end
 
 function ScenesTransitionsService.show_in(self, transition, easing, duration, delay)
@@ -40,13 +45,17 @@ function ScenesTransitionsService.back_out(self, transition, easing, duration, d
 	self.transition.back_out(transition, easing, duration, delay)
 end
 
+function ScenesTransitionsService.final()
+    monarch.remove_listener(msg.url())
+    ScreenService:remove_listener(msg.url())
+end
+
 function ScenesTransitionsService.on_message(self, message_id, message, sender)
     self.transition.handle(message_id, message, sender)
 
     if message_id == hash(MsgConst.screen.on_update) then
-        print(message.width, message.height)
-		self.transition.window_resized(message.width, message.height)
-	end
+		-- self.transition.window_resized(message.width, message.height)
+    end
 end
 
 return ScenesTransitionsService

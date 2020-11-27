@@ -86,6 +86,14 @@ images {
   image: "/src/assets/images/spawn_objects/watermelon.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/src/assets/images/spawn_objects/bomb.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/src/assets/images/spawn_objects/bomb_fragment.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

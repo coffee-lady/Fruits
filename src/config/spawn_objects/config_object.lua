@@ -14,7 +14,7 @@ local ObjectConfig = {
     rotation_angle = 0.2,
     rotation_duration_bounds = { 3, 6 },
 
-    score_bounds = { 100, 200 }
+    score_bounds = { 100, 200 },
 }
 
 return ObjectConfig

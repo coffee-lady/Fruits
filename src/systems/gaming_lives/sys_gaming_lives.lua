@@ -14,6 +14,12 @@ function GamingLivesSystem:init()
     msg.post(msg.url(GameSceneGui), GuiMsg.gaming_lives.set)
 end
 
+function GamingLivesSystem:on_deleted_departed_object(obj)
+    if obj and obj.is_bomb then return end
+
+    self:on_deleted_object()
+end
+
 function GamingLivesSystem:on_deleted_object()
     self.current_lives = self.current_lives - 1
 
@@ -22,6 +28,12 @@ function GamingLivesSystem:on_deleted_object()
     end
 
     msg.post(msg.url(GameSceneGui), GuiMsg.gaming_lives.decrease)
+end
+
+function GamingLivesSystem:on_swiped_object(obj)
+    if obj.is_bomb then
+        self:on_deleted_object()
+    end
 end
 
 function GamingLivesSystem:on_end_of_lives(callback)

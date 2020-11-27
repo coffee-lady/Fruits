@@ -14,8 +14,6 @@ local Msg = Constants.messages
 
 local random = RandomLib.random
 
-go.property('anim_to_play', hash(''))
-
 function init(self)
 	SpawnedObjAnimation:animate_rotation()
 	SpawnedObjAnimation:animate_scale()
@@ -23,15 +21,19 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash(Msg.spawned_object.play_swipe_animation) then
-		particlefx.play('#swipe_effect')
-        particlefx.set_constant('#swipe_effect', 'splashes', 'tint', SpawnObjConstants.sprite_colors[self.anim_to_play])
-        particlefx.set_constant('#swipe_effect', 'blots', 'tint', SpawnObjConstants.sprite_colors[self.anim_to_play])
+
+		if self.data.is_bomb then
+			particlefx.play('#bomb_swipe_effect')
+		else
+			particlefx.play('#swipe_effect')
+			particlefx.set_constant('#swipe_effect', 'splashes', 'tint', self.data.particles_color)
+			particlefx.set_constant('#swipe_effect', 'blots', 'tint', self.data.particles_color)
+		end
 	end
 
 	if message_id == hash(Msg.spawned_object.set_play_anim) then
-		self.anim_to_play = message.anim_to_play
+		self.data = message.data
 
-		local sprite_id = SpawnObjConstants.sprites[self.anim_to_play]
-		msg.post('#sprite', 'play_animation', { id = hash(sprite_id) })
+		msg.post('#sprite', 'play_animation', { id = hash(self.data.sprite) })
 	end
 end

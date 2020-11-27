@@ -11,14 +11,21 @@ local RandomLib = Libs.random
 
 local random = RandomLib.random
 local random_arr = RandomLib.random_arr
+local random_with_weights = RandomLib.random_with_weights
 
 local ObjectModel = {}
 
 function ObjectModel:new()
+	local random_object = random_with_weights(SpawnObjConstants)
+
 	local obj = {
 		pos = vmath.vector3(0, 0, 0),
-		anim_to_play = SpawnObjConstants.sprites_ids[math.random(#SpawnObjConstants.sprites_ids)],
-    }
+		class_id = random_object.class_id,
+		sprite = random_object.sprite,
+		is_bomb = random_object.is_bomb,
+		particles_color = random_object.particles_color,
+	}
+
     self.__index = self
     return setmetatable(obj, self)
 end
@@ -27,11 +34,11 @@ function ObjectModel:spawn(factory_id)
 	local msg_text = Msg.spawned_object.set_play_anim
 
 	self.id = factory.create(factory_id, self.pos, nil, nil, self.scale)
-	msg.post(msg.url(self.id), msg_text, { anim_to_play = self.anim_to_play })
+	msg.post(msg.url(self.id), msg_text, { data = self })
 end
 
 function ObjectModel:set_props(zone, coords_start, coords_end)
-	self.timer = random_arr(PackConfig.timer_bounds)
+	self.timer = random_arr(PackConfig.objects_timer_bounds)
 	self.angle = math.rad(random_arr(zone.angle_bounds))
 
 	self.pos.x = random(coords_start.x, coords_end.x)

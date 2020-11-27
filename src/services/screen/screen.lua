@@ -8,8 +8,7 @@ local ScreenService = {
 }
 
 function ScreenService:init(callback)
-    self.url = msg.url()
-    rendercam.add_window_listener(self.url)
+    self:add_listener(msg.url())
 
     timer.delay(self.update_delay, false, function ()
         self:update()
@@ -32,6 +31,14 @@ end
 
 function ScreenService:get_sizes()
     return self.sizes.x
+end
+
+function ScreenService:add_listener(url)
+    rendercam.add_window_listener(url)
+end
+
+function ScreenService:remove_listener(url)
+    rendercam.remove_window_listener(url)
 end
 
 function ScreenService:get_coords()

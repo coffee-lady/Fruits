@@ -22,12 +22,8 @@ function Systems:init()
     ScoringSys:init()
     GamingLivesSys:init()
 
-    SpawnObjectsSys:on_swiped_object(function (obj)
-        ScoringSys:on_swiping_object(obj)
-    end)
-
-    SpawnObjectsSys:on_deleted_departed_objects(function ()
-        GamingLivesSys:on_deleted_object()
+    SpawnObjectsSys:on_deleted_departed_object(function (obj)
+        GamingLivesSys:on_deleted_departed_object(obj)
     end)
 
     GamingLivesSys:on_end_of_lives(function ()
@@ -39,6 +35,11 @@ function Systems:init()
                 best_score = app_data.game.best_score
             })
         end)
+    end)
+
+    SpawnObjectsSys:on_swiped_object(function (obj)
+        ScoringSys:on_swiping_object(obj)
+        GamingLivesSys:on_swiped_object(obj)
     end)
 end
 

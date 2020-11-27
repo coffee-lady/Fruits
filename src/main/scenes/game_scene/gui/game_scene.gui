@@ -1,7 +1,23 @@
 script: "/src/main/scenes/game_scene/gui/game_scene.gui_script"
 fonts {
-  name: "score"
+  name: "RobotoMono"
   font: "/src/assets/fonts/RobotoMono.font"
+}
+fonts {
+  name: "AssistantRegular"
+  font: "/src/assets/fonts/AssistantRegular.font"
+}
+fonts {
+  name: "KaushanScriptRegular"
+  font: "/src/assets/fonts/KaushanScriptRegular.font"
+}
+fonts {
+  name: "MeriendaRegular"
+  font: "/src/assets/fonts/MeriendaRegular.font"
+}
+fonts {
+  name: "NewsCycleRegular"
+  font: "/src/assets/fonts/NewsCycleRegular.font"
 }
 textures {
   name: "main"
@@ -15,8 +31,8 @@ background_color {
 }
 nodes {
   position {
-    x: 112.0
-    y: 557.0
+    x: 143.0
+    y: 543.0
     z: 0.0
     w: 1.0
   }
@@ -34,7 +50,7 @@ nodes {
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -48,7 +64,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "0\n"
   ""
-  font: "score"
+  font: "RobotoMono"
   id: "score"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -76,8 +92,67 @@ nodes {
   text_leading: 1.0
   text_tracking: 0.0
 }
-layers {
-  name: "main"
+nodes {
+  position {
+    x: 144.0
+    y: 493.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.7
+    y: 0.7
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 300.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Best: 0"
+  font: "MeriendaRegular"
+  id: "best_score"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
 }
 layers {
   name: "text"

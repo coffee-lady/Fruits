@@ -1,6 +1,6 @@
 local Config = require('src.config.config')
 
-local FactoryConfig = Config.spawn_objects.factory
+local PackConfig = Config.spawn_objects.pack
 local ZonesConfig = Config.spawn_objects.zones
 
 local ObjectsManagerModel = {}
@@ -11,10 +11,10 @@ function ObjectsManagerModel:update_positions(objects, factory_id, min_coords, m
 		obj.timer = obj.timer - dt
 		if obj.id then
 			if obj.pos.y >= max_coords.y - max_coords.y * ZonesConfig.top_padding then
-				obj.speed.y = - FactoryConfig.gravity
+				obj.speed.y = - PackConfig.gravity
 			end
 
-			obj.speed.y = obj.speed.y - FactoryConfig.gravity
+			obj.speed.y = obj.speed.y - PackConfig.gravity
 			obj.pos.x = obj.pos.x + obj.speed.x * dt
 			obj.pos.y = obj.pos.y + obj.speed.y * dt
 
@@ -42,12 +42,12 @@ function ObjectsManagerModel:delete_departed_objects(objects, min_coords)
 		if obj and obj.id and obj.pos.y < min_coords.y then
 			go.delete(obj.id)
 			table.remove(objects, i)
-			if self.on_deleted_departed_objects then self.on_deleted_objects_callback() end
+			if self.on_deleted_departed_object then self.on_deleted_objects_callback(obj) end
 		end
 	end
 end
 
-function ObjectsManagerModel:on_deleted_departed_objects(callback)
+function ObjectsManagerModel:on_deleted_departed_object(callback)
 	self.on_deleted_objects_callback = callback
 end
 

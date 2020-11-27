@@ -1,15 +1,4 @@
-local Libs = require('src.libs.libs')
-local Constants = require('src.constants.constants')
-local Services = require('src.services.services')
-local Animations = require('src.main.animations.animations')
-
 local GuiSystem = require('src.systems.systems_gui')
-
-local GuiConst = Constants.gui
-local GuiMsg = Constants.messages.gui
-
-local ScenesService = Services.scenes
-local GuiService = Services.gui
 
 function init(self)
 	msg.post('.', 'acquire_input_focus')

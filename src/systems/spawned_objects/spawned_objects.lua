@@ -12,8 +12,8 @@ function SpawnedObjectsSystem:update(screen_coords, dt)
     SpawnSystem:update(screen_coords, dt)
 end
 
-function SpawnedObjectsSystem:on_deleted_departed_objects(callback)
-    SpawnSystem:on_deleted_departed_objects(callback)
+function SpawnedObjectsSystem:on_deleted_departed_object(callback)
+    SpawnSystem:on_deleted_departed_object(callback)
 end
 
 function SpawnedObjectsSystem:on_message(message_id, message, sender)

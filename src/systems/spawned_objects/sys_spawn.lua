@@ -35,7 +35,7 @@ function SpawnSystem:update(screen_coords, dt)
 
 	self.timer = self.timer - dt
     if self.timer <= 0 and not self.game_over then
-        self.timer = PackModel:create(self.objects, self.zones, factory_id, screen_coords)
+        self.timer = PackModel:create(self.objects, self.zones, screen_coords)
     end
 end
 
@@ -53,8 +53,8 @@ function SpawnSystem:on_game_over(callback)
     self:wait_for_objects(callback)
 end
 
-function SpawnSystem:on_deleted_departed_objects(callback)
-    ObjectsManagerModel:on_deleted_departed_objects(callback)
+function SpawnSystem:on_deleted_departed_object(callback)
+    ObjectsManagerModel:on_deleted_departed_object(callback)
 end
 
 function SpawnSystem:on_message(message_id, message, sender)
