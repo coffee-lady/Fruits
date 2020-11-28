@@ -23,6 +23,7 @@ function ObjectModel:new()
 		class_id = random_object.class_id,
 		sprite = random_object.sprite,
 		is_bomb = random_object.is_bomb,
+		is_bonus_life = random_object.is_bonus_life,
 		particles_color = random_object.particles_color,
 	}
 
@@ -44,8 +45,9 @@ function ObjectModel:set_props(zone, coords_start, coords_end)
 	self.pos.x = random(coords_start.x, coords_end.x)
     self.pos.y = random(coords_start.y, coords_end.y)
 
-	local speed_x = random_arr(ObjectConfig.speed_bounds.x) * math.cos(self.angle)
-	local speed_y = random_arr(ObjectConfig.speed_bounds.y) * math.sin(self.angle)
+	local speed_bounds = self.is_bonus_life and ObjectConfig.bonus_life_speed_bounds or ObjectConfig.speed_bounds
+	local speed_x = random_arr(speed_bounds.x) * math.cos(self.angle)
+	local speed_y = random_arr(speed_bounds.y) * math.sin(self.angle)
 
 	self.speed = vmath.vector3(speed_x, speed_y, 0)
 	self.scale = random_arr(ObjectConfig.scale_bounds)

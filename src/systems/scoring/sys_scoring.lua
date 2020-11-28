@@ -15,7 +15,7 @@ function ScoringSystem:init()
 end
 
 function ScoringSystem:on_swiping_object(obj)
-    if self.game_over then return end
+    if self.game_over or obj.is_bomb or obj.is_bonus_life then return end
     self.score = ScoringModel:update_score(obj, self.score, self.points)
 end
 

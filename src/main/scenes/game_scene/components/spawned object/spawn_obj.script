@@ -24,6 +24,8 @@ function on_message(self, message_id, message, sender)
 
 		if self.data.is_bomb then
 			particlefx.play('#bomb_swipe_effect')
+		elseif self.data.is_bonus_life then
+			particlefx.play('#bonus_life_swipe_effect')
 		else
 			particlefx.play('#swipe_effect')
 			particlefx.set_constant('#swipe_effect', 'splashes', 'tint', self.data.particles_color)

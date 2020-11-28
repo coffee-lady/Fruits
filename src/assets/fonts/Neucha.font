@@ -1,6 +1,6 @@
-font: "/src/assets/fonts/ttf/Assistant-Regular.ttf"
+font: "/src/assets/fonts/ttf/Neucha-Regular.ttf"
 material: "/builtins/fonts/font.material"
-size: 40
+size: 100
 antialias: 1
 alpha: 1.0
 outline_alpha: 0.0

@@ -9,6 +9,7 @@ local ScoringAnimation = Animations.scoring
 
 local GuiMsg = Constants.messages.gui
 local SceneConst = Constants.component_urls.scenes.game
+local GuiScoringAnimConf = Config.gui.scenes.game.score_animation
 
 local ScoringConfig = Config.player.scoring
 
@@ -54,7 +55,7 @@ function GuiScoringSystem:animate_score(new_score)
 
         if current_score == new_score then
             timer.cancel(handle)
-            ScoringAnimation:animate_scale(self.score_node)
+            ScoringAnimation:animate_scale(self.score_node, GuiScoringAnimConf.scale, GuiScoringAnimConf.duration)
         end
     end)
 end

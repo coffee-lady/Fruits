@@ -7,6 +7,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(1, 0.82, 0.12, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     black_berry_dark = {
@@ -15,6 +16,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.18, 0.09, 0.31, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     black_berry_light = {
@@ -23,6 +25,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.4, 0, 0.5, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     black_cherry = {
@@ -31,6 +34,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.4, 0, 0.5, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     coconut = {
@@ -39,6 +43,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.42, 0.34, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     green_apple = {
@@ -47,6 +52,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.67, 0.78, 0.22, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     green_grape = {
@@ -55,6 +61,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.53, 0.67, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     lemon = {
@@ -63,6 +70,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(1, 0.8, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     lime = {
@@ -71,6 +79,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.58, 0.72, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     orange = {
@@ -79,6 +88,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(1, 0.55, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     peach = {
@@ -87,6 +97,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(1, 0.63, 0.05, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     pear = {
@@ -95,6 +106,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.63, 0.73, 0.2, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     plum = {
@@ -103,6 +115,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.49, 0.3, 0.7, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     raspberry = {
@@ -111,6 +124,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.59, 0, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     red_apple = {
@@ -119,6 +133,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.59, 0, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     red_cherry = {
@@ -127,6 +142,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.76, 0, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     red_grape = {
@@ -135,6 +151,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.68, 0.32, 0.32, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     star_fruit = {
@@ -143,6 +160,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(1, 0.94, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     strawberry = {
@@ -151,6 +169,7 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.83, 0, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     watermelon = {
@@ -159,14 +178,25 @@ SpawnObjConstants = {
         particles_color = vmath.vector4(0.26, 0.66, 0, 1),
         weight = 3,
         is_bomb = false,
+        is_bonus_life = false,
     },
 
     bomb = {
         class_id = 'bomb',
         sprite = 'bomb',
         particles_color = 0,
-        weight = 5,
+        weight = 2,
         is_bomb = true,
+        is_bonus_life = false,
+    },
+
+    bonus_life = {
+        class_id = 'bonus_life',
+        sprite = 'bonus_life',
+        particles_color = 0,
+        weight = 1,
+        is_bomb = false,
+        is_bonus_life = true,
     },
 
 }

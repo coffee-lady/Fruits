@@ -1,23 +1,11 @@
 script: "/src/main/scenes/start_scene/gui/start_scene.gui_script"
 fonts {
-  name: "KaushanScriptRegular"
-  font: "/src/assets/fonts/KaushanScriptRegular.font"
+  name: "Abel"
+  font: "/src/assets/fonts/Abel.font"
 }
 fonts {
-  name: "NewsCycleRegular"
-  font: "/src/assets/fonts/NewsCycleRegular.font"
-}
-fonts {
-  name: "RobotoMonoLight"
-  font: "/src/assets/fonts/RobotoMonoLight.font"
-}
-fonts {
-  name: "AssistantRegular"
-  font: "/src/assets/fonts/AssistantRegular.font"
-}
-fonts {
-  name: "MeriendaRegular"
-  font: "/src/assets/fonts/MeriendaRegular.font"
+  name: "Neucha"
+  font: "/src/assets/fonts/Neucha.font"
 }
 textures {
   name: "main"
@@ -62,7 +50,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/start_scene"
+  texture: ""
   id: "root"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -85,7 +73,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: -287.0
     y: 84.0
     z: 0.0
     w: 1.0
@@ -97,8 +85,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.7
+    y: 0.7
     z: 1.0
     w: 1.0
   }
@@ -109,19 +97,19 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Fruits Slicer Game"
-  font: "KaushanScriptRegular"
+  text: "Fruit Slicer"
+  font: "Abel"
   id: "title"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -148,8 +136,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: -153.0
+    y: -154.0
     z: 0.0
     w: 1.0
   }
@@ -160,81 +148,26 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 3.938
-    y: 4.992
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 237.0
+    y: 64.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.101960786
-    y: 0.101960786
-    z: 0.101960786
+    x: 0.187
+    y: 0.20075
+    z: 0.22
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "transparent_block"
-  xanchor: XANCHOR_LEFT
-  yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_ZOOM
-  parent: "root"
-  layer: "main"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.45
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 0.0
-    y: -170.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.224
-    y: 0.515
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.30280662
-    y: 0.7019608
-    z: 0.3309822
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "main/start_scene_play_button"
   id: "button_start"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -254,12 +187,12 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
     x: 0.0
-    y: -168.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -270,14 +203,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 0.35
+    y: 0.35
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 50.0
+    x: 230.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -289,9 +222,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "start game\n"
-  ""
-  font: "MeriendaRegular"
+  text: "Play"
+  font: "Neucha"
   id: "button_start_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -310,7 +242,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_ZOOM
   line_break: false
-  parent: "root"
+  parent: "button_start"
   layer: "text"
   inherit_alpha: false
   alpha: 1.0
@@ -322,8 +254,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: -56.0
+    x: -287.0
+    y: -7.0
     z: 0.0
     w: 1.0
   }
@@ -334,31 +266,31 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 500.0
+    y: 89.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "best score"
-  font: "KaushanScriptRegular"
+  text: "Your record:"
+  font: "Abel"
   id: "best_score"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -382,6 +314,116 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
+}
+nodes {
+  position {
+    x: -683.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 446.0
+    y: 640.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "main/start_scene_pic"
+  id: "pic"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "root"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 372.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 186.0
+    y: 187.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "main/start_scene_lemon"
+  id: "slice_lemon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "root"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
 }
 layers {
   name: "main"

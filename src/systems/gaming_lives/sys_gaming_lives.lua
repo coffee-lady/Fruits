@@ -34,6 +34,11 @@ function GamingLivesSystem:on_swiped_object(obj)
     if obj.is_bomb then
         self:on_deleted_object()
     end
+
+    if obj.is_bonus_life and self.current_lives < GamingLivesConfig.max_lives then
+        self.current_lives = self.current_lives + 1
+        msg.post(msg.url(GameSceneGui), GuiMsg.gaming_lives.increase)
+    end
 end
 
 function GamingLivesSystem:on_end_of_lives(callback)

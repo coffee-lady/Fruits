@@ -1,10 +1,14 @@
 local ObjectConfig = {
-    sprites_number = 9,
     collision_object_radius = 50,
 
     speed_bounds = {
         x = { 700, 850 },
         y = { 650, 700 },
+    },
+
+    bonus_life_speed_bounds = {
+        x = { 900, 950 },
+        y = { 800, 850 },
     },
 
     scale_bounds = { 0.5, 0.7 },
@@ -14,7 +18,7 @@ local ObjectConfig = {
     rotation_angle = 0.2,
     rotation_duration_bounds = { 3, 6 },
 
-    score_bounds = { 100, 200 },
+    score_bounds = { 100, 100 },
 }
 
 return ObjectConfig

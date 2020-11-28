@@ -1,7 +1,13 @@
+local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
+local Libs = require('src.libs.libs')
+
+local GuiLib = Libs.gui
 
 local DataService = Services.data
+
+local GuiButtonsConf = Config.gui.scenes.start.button_animation
 
 local ScenesService = Services.scenes
 local ScenesConst = Constants.scenes
@@ -26,6 +32,8 @@ function on_input(self, action_id, action)
 
     if action_id == hash(ActionsConst.click) and action.released then
         if gui.pick_node(button_start, action.x, action.y) then
+            GuiLib:animate_button_click(button_start, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
+            GuiLib:animate_button_click(button_start, 0.12, vmath.vector3(0.1, 0.05, 0), 0.3)
             ScenesService.switch_to_scene(ScenesConst.scenes.game)
         end
     end

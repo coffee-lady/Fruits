@@ -91,7 +91,15 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/src/assets/images/spawn_objects/bomb_fragment.png"
+  image: "/src/assets/images/spawn_obj_particlefx/bomb_fragment.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/src/assets/images/spawn_objects/bonus_life.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/src/assets/images/spawn_obj_particlefx/bonus_life_particle.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

@@ -1,7 +1,15 @@
 script: "/src/main/popups/game_end/gui/popup_game_end.gui_script"
 fonts {
-  name: "RobotoMonoLight"
-  font: "/src/assets/fonts/RobotoMonoLight.font"
+  name: "Abel"
+  font: "/src/assets/fonts/Abel.font"
+}
+fonts {
+  name: "Neucha"
+  font: "/src/assets/fonts/Neucha.font"
+}
+textures {
+  name: "main"
+  texture: "/src/assets/atlases/main.atlas"
 }
 background_color {
   x: 0.0
@@ -65,8 +73,8 @@ nodes {
 }
 nodes {
   position {
-    x: -7.0
-    y: 122.974
+    x: -269.0
+    y: 91.974
     z: 0.0
     w: 1.0
   }
@@ -77,31 +85,31 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 300.0
+    x: 600.0
     y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Game over"
-  font: "RobotoMonoLight"
+  font: "Abel"
   id: "title"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -146,20 +154,20 @@ nodes {
     w: 1.0
   }
   size {
-    x: 700.0
-    y: 500.0
+    x: 847.0
+    y: 474.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.1064
-    y: 0.12824
-    z: 0.14
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "main/popup"
   id: "background"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -183,71 +191,7 @@ nodes {
 }
 nodes {
   position {
-    x: -109.0
-    y: -11.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.7
-    y: 0.7
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 300.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Your Score:\n"
-  "Best Score:"
-  font: "RobotoMonoLight"
-  id: "text"
-  xanchor: XANCHOR_LEFT
-  yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_ZOOM
-  line_break: false
-  parent: "root"
-  layer: "text"
-  inherit_alpha: false
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 110.0
+    x: -268.0
     y: -30.0
     z: 0.0
     w: 1.0
@@ -259,31 +203,32 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 0.3
+    y: 0.3
     z: 1.0
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 50.0
+    x: 600.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
-  font: "RobotoMonoLight"
+  text: "Best score: 0\n"
+  ""
+  font: "Abel"
   id: "best_score"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -310,7 +255,7 @@ nodes {
 }
 nodes {
   position {
-    x: -115.0
+    x: -177.0
     y: -136.0
     z: 0.0
     w: 1.0
@@ -341,14 +286,14 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "main/popup_button"
   id: "button_restart"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_ZOOM
   parent: "root"
-  layer: "bg"
+  layer: "text"
   inherit_alpha: false
   slice9 {
     x: 0.0
@@ -365,8 +310,8 @@ nodes {
 }
 nodes {
   position {
-    x: 110.0
-    y: 10.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -377,76 +322,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 0.3
+    y: 0.6
     z: 1.0
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 50.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "0"
-  font: "RobotoMonoLight"
-  id: "current_score"
-  xanchor: XANCHOR_LEFT
-  yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_ZOOM
-  line_break: false
-  parent: "root"
-  layer: "text"
-  inherit_alpha: false
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: -115.0
-    y: -136.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
+    x: 400.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -461,7 +343,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Restart\n"
   ""
-  font: "RobotoMonoLight"
+  font: "Neucha"
   id: "button_restart_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -480,7 +362,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_ZOOM
   line_break: false
-  parent: "root"
+  parent: "button_restart"
   layer: "text"
   inherit_alpha: false
   alpha: 1.0
@@ -492,8 +374,8 @@ nodes {
 }
 nodes {
   position {
-    x: 121.0
-    y: -136.0
+    x: -268.0
+    y: 10.0
     z: 0.0
     w: 1.0
   }
@@ -504,32 +386,31 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 0.3
+    y: 0.3
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 600.0
     y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Back home\n"
-  ""
-  font: "RobotoMonoLight"
-  id: "button_hom_text"
+  text: "Your points: 0"
+  font: "Abel"
+  id: "current_score"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -556,7 +437,7 @@ nodes {
 }
 nodes {
   position {
-    x: 121.0
+    x: 31.0
     y: -136.0
     z: 0.0
     w: 1.0
@@ -587,14 +468,14 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "main/popup_button"
   id: "button_home"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_ZOOM
   parent: "root"
-  layer: "bg"
+  layer: "text"
   inherit_alpha: false
   slice9 {
     x: 0.0
@@ -609,11 +490,133 @@ nodes {
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
 }
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.3
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 400.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Back home\n"
+  ""
+  font: "Neucha"
+  id: "button_home_text"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_ZOOM
+  line_break: false
+  parent: "button_home"
+  layer: "text"
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 423.5
+    y: -237.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 246.0
+    y: 423.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "main/popup_pic"
+  id: "pic"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SE
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "root"
+  layer: "pic"
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
 layers {
   name: "bg"
 }
 layers {
   name: "text"
+}
+layers {
+  name: "pic"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

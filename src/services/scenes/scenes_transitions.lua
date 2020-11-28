@@ -1,10 +1,6 @@
-local Constants = require('src.constants.constants')
 local transitions = require('monarch.transitions.gui')
 local monarch = require('monarch.monarch')
 local ScreenService = require('src.services.screen.screen')
-
-local MsgConst = Constants.messages
-
 
 local ScenesTransitionsService = {}
 
@@ -52,10 +48,6 @@ end
 
 function ScenesTransitionsService.on_message(self, message_id, message, sender)
     self.transition.handle(message_id, message, sender)
-
-    if message_id == hash(MsgConst.screen.on_update) then
-		-- self.transition.window_resized(message.width, message.height)
-    end
 end
 
 return ScenesTransitionsService

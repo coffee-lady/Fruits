@@ -1,6 +1,11 @@
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
+local Libs = require('src.libs.libs')
+
+local GuiLib = Libs.gui
+
+local GuiButtonsConf = Config.gui.scenes.game.button_animation
 
 local ScenesService = Services.scenes
 local ScenesConst = Constants.scenes
@@ -22,8 +27,8 @@ function init(self)
     local current_score_node = gui.get_node(PopupConst.gui_nodes.current_score)
     local best_score_node = gui.get_node(PopupConst.gui_nodes.best_score)
 
-    gui.set_text(current_score_node, popup_data.score)
-    gui.set_text(best_score_node, popup_data.best_score)
+    gui.set_text(current_score_node, 'Your points: ' .. popup_data.score)
+    gui.set_text(best_score_node, 'Best score: ' .. popup_data.best_score)
 
     ScenesTransitionsService.init(self, gui.get_node('root'))
 
@@ -40,11 +45,14 @@ function on_input(self, action_id, action)
     local button_home = gui.get_node(PopupConst.gui_nodes.button_home)
     local button_restart = gui.get_node(PopupConst.gui_nodes.button_restart)
 
+
     if action_id == hash(ActionsConst.click) and action.released then
         if gui.pick_node(button_home, action.x, action.y) then
+            GuiLib:animate_button_click(button_home, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
             ScenesService.switch_to_scene(ScenesConst.scenes.start)
 
         elseif gui.pick_node(button_restart, action.x, action.y) then
+            GuiLib:animate_button_click(button_restart, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
             ScenesService.switch_to_scene(ScenesConst.scenes.game, nil, true)
         end
     end
