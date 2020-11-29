@@ -18,8 +18,16 @@ GuiScenesConfig.game = {
         delay = 0,
     },
     score_animation = {
-        scale = 1.2,
-        duration = 0.3,
+        label = {
+            scale = vmath.vector3(1.2, 1.2, 0, 0),
+            duration = 0.3
+        },
+        label_above_obj = {
+            duration = 1,
+            rotation_bounds = { -40, 40 },
+            color = vmath.vector4(0, 0, 0, 0),
+            scale = vmath.vector3(1.3, 1.3, 0, 0),
+        },
     },
     button_animation = {
         duration = 0.3,

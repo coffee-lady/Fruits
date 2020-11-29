@@ -7,6 +7,8 @@ ComponentUrls.scenes.start = {
     gui_nodes = {
         button_start = 'button_start',
         best_score = 'best_score',
+        slice_lemon = 'slice_lemon',
+        lemon_particlefx = 'lemon_particlefx',
     }
 }
 

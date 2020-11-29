@@ -1,11 +1,11 @@
 local Libs = require('src.libs.libs')
 local Config = require('src.config.config')
 local Constants = require('src.constants.constants')
-local Animations = require('src.main.animations.animations')
+
+local Animations = require('src.main.scenes.game_scene.animations.animations')
+local Animation = Animations.spawned_obj
 
 local SpawnObjConstants = Constants.spawn_obj
-
-local SpawnedObjAnimation = Animations.spawned_object
 
 local ObjectConfig = Config.spawn_objects.object
 local RandomLib = Libs.random
@@ -13,10 +13,11 @@ local RandomLib = Libs.random
 local Msg = Constants.messages
 
 local random = RandomLib.random
+local random_arr = RandomLib.random_arr
 
 function init(self)
-	SpawnedObjAnimation:animate_rotation()
-	SpawnedObjAnimation:animate_scale()
+	Animation:animate_rotation()
+	Animation:animate_scale()
 end
 
 function on_message(self, message_id, message, sender)

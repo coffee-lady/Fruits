@@ -21,12 +21,8 @@ end
 
 function ScoringModel:update_score(obj, score, points)
     local new_score = score + points[obj.class_id]
-    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { prev_score = score, new_score = new_score })
+    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { obj = obj, prev_score = score, new_score = new_score })
     return new_score
-end
-
-function ScoringModel:zero_out()
-    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { new_score = 0 })
 end
 
 return ScoringModel

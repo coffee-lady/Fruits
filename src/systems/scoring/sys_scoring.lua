@@ -11,7 +11,6 @@ function ScoringSystem:init()
     self.score = 0
     self.game_over = false
     ScoringModel:set_random_points(self.points)
-    ScoringModel:zero_out()
 end
 
 function ScoringSystem:on_swiping_object(obj)

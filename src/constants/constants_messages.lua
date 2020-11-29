@@ -13,6 +13,7 @@ local MessagesConstants = {
 MessagesConstants.scenes.game.restart = 'restart_game'
 
 MessagesConstants.gui.scoring.set = 'set_score'
+MessagesConstants.gui.scoring.update = 'update_score'
 
 MessagesConstants.gui.gaming_lives.set = 'set_gaming_lives'
 MessagesConstants.gui.gaming_lives.restore = 'restore_gaming_lives'

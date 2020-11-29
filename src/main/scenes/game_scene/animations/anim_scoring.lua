@@ -1,0 +1,78 @@
+local Config = require('src.config.config')
+
+local ScoringAnimConf = Config.gui.scenes.game.score_animation
+
+local LabelAnim = ScoringAnimConf.label
+local LabelAboveObjAnim = ScoringAnimConf.label_above_obj
+
+local ScoringAnimations = {}
+
+function ScoringAnimations:init(best_score_node, score_node, best_score)
+    self.best_score_node = best_score_node
+    self.score_node = score_node
+    self.best_score = best_score
+end
+
+local function animate_scale_label(node)
+    gui.animate(node, gui.PROP_SCALE, LabelAnim.scale, gui.EASING_INCUBIC, LabelAnim.duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+end
+
+local function animate_scale_label_above_obj(node)
+    gui.animate(node, gui.PROP_SCALE, LabelAboveObjAnim.scale,
+                gui.EASING_INQUART, LabelAboveObjAnim.duration, 0, nil,
+                gui.PLAYBACK_ONCE_BACKWARD)
+end
+
+local function animate_label_above_obj_color(node)
+    gui.animate(node, gui.PROP_COLOR, LabelAboveObjAnim.color,
+                gui.EASING_INQUART, LabelAboveObjAnim.duration, 0, nil,
+                gui.PLAYBACK_ONCE_FORWARD)
+end
+
+function ScoringAnimations:animate_scoring(new_score)
+    local prev_score = tonumber(gui.get_text(self.score_node))
+    local score_range = new_score - prev_score
+    local elapsed_time = 0
+
+    if score_range == 0 then
+        gui.set_text(self.score_node, 0)
+        return
+    end
+
+    timer.delay(LabelAnim.duration / score_range, true, function (_, handle, dt)
+        elapsed_time = elapsed_time + dt
+
+        local remaining_time = math.max((LabelAnim.duration - elapsed_time) / LabelAnim.duration, 0)
+        local current_score = math.modf(new_score - remaining_time * score_range)
+
+        if current_score > self.best_score then
+            self.best_score = current_score
+            gui.set_text(self.best_score_node, 'Best: ' .. self.best_score)
+        end
+
+        gui.set_text(self.score_node, current_score)
+
+        if current_score == new_score then
+            timer.cancel(handle)
+            animate_scale_label(self.score_node)
+        end
+    end)
+end
+
+function ScoringAnimations:animate_scoring_above_obj(obj, score_range)
+    local pos = obj.pos
+
+    local text_node = gui.new_text_node(pos, '+' .. score_range)
+
+    local rot_min, rot_max = LabelAboveObjAnim.rotation_bounds[1], LabelAboveObjAnim.rotation_bounds[2]
+    gui.set_rotation(text_node, vmath.vector4(0, 0, math.random(rot_min, rot_max), 0))
+
+    animate_label_above_obj_color(text_node)
+    animate_scale_label_above_obj(text_node)
+
+    timer.delay(LabelAboveObjAnim.duration, false, function ()
+        gui.delete_node(text_node)
+    end)
+end
+
+return ScoringAnimations

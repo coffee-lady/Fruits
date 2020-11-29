@@ -8,6 +8,7 @@ shared_state = 1
 [display]
 width = 1366
 high_dpi = 0
+dynamic_orientation = 0
 
 [android]
 input_method = HiddenInputField
