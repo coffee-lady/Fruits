@@ -1,4 +1,6 @@
-local Config = require('src.config.config')
+local App = require('src.app')
+
+local Config = App.config
 
 local PackConfig = Config.spawn_objects.pack
 local ZonesConfig = Config.spawn_objects.zones

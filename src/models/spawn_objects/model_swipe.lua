@@ -1,14 +1,16 @@
+local App = require('src.app')
+
+local Config = App.config
+local Constants = App.constants
+local Libs = App.libs
+
 local rendercam = require('rendercam.rendercam')
-local Libs = require('src.libs.libs')
-local Config = require('src.config.config')
-local Constants = require('src.constants.constants')
+local ObjectsManagerModel = require('src.models.spawn_objects.model_objects_manager')
 
 local ObjectConfig = Config.spawn_objects.object
 local SwipeConfig = Config.spawn_objects.swipe
 
 local MsgConst = Constants.messages
-
-local ObjectsManagerModel = require('src.models.spawn_objects.model_objects_manager')
 
 local SwipeModel = {}
 

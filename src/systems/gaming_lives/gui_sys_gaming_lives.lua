@@ -1,4 +1,7 @@
-local Constants = require('src.constants.constants')
+local App = require('src.app')
+
+local Constants = App.constants
+
 local Models = require('src.models.models')
 
 local GamingLivesGuiModel = Models.player.gaming_lives_gui

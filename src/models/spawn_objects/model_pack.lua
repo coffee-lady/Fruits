@@ -1,5 +1,7 @@
-local Libs = require('src.libs.libs')
-local Config = require('src.config.config')
+local App = require('src.app')
+
+local Config = App.config
+local Libs = App.libs
 
 local ObjectModel = require('src.models.spawn_objects.model_object')
 

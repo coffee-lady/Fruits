@@ -1,5 +1,7 @@
-local Constants = require('src.constants.constants')
-local Services = require('src.services.services')
+local App = require('src.app')
+
+local Constants = App.constants
+local Services = App.services
 
 local Animations = require('src.main.scenes.game_scene.animations.animations')
 local Animation = Animations.scoring

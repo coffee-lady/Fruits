@@ -1,4 +1,6 @@
-local Libs = require('src.libs.libs')
+local App = require('src.app')
+
+local Libs = App.libs
 
 local CoordsLib = Libs.coords
 

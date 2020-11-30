@@ -1,5 +1,8 @@
+local App = require('src.app')
+
+local Services = App.services
+
 local Models = require('src.models.models')
-local Services = require('src.services.services')
 
 local DataService = Services.data
 local ScoringModel = Models.player.scoring

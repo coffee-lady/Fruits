@@ -1,5 +1,6 @@
-local Config = require('src.config.config')
-local Constants = require('src.constants.constants')
+local App = require('src.app')
+local Config = App.config
+local Constants = App.constants
 
 local GuiMsg = Constants.messages.gui
 local SpawnObjConstants = Constants.spawn_obj
