@@ -8,7 +8,7 @@ local ScoringAnimConf = Config.gui.scenes.game.score_animation
 local LabelAnim = ScoringAnimConf.label
 local LabelAboveObjAnim = ScoringAnimConf.label_above_obj
 
-local coords = Services.screen:get_sizes()
+local _, coords = Services.screen:get_coords()
 local center_coords = coords / 2
 
 local ScoringAnimations = {}
@@ -54,7 +54,8 @@ function ScoringAnimations:animate_scoring(new_score, is_combo)
         local rot_min, rot_max = ScoringAnimConf.combo.rotation_bounds[1], ScoringAnimConf.combo.rotation_bounds[2]
         gui.set_rotation(combo_node, vmath.vector4(0, 0, math.random(rot_min, rot_max), 0))
 
-        gui.animate(combo_node, gui.PROP_COLOR, ScoringAnimConf.combo.color, gui.EASING_INCUBIC, ScoringAnimConf.combo.duration, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
+        gui.animate(combo_node, gui.PROP_COLOR, ScoringAnimConf.combo.color, gui.EASING_INCUBIC,
+                    ScoringAnimConf.combo.duration, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 
         timer.delay(ScoringAnimConf.combo.duration, false, function ()
             gui.delete_node(combo_node)
