@@ -1,7 +1,3 @@
-local Constants = require('src.constants.constants')
-
-local ActionsConst = Constants.actions
-
 local GuiLib = {}
 
 local function set_non_negative(prop, blackout)

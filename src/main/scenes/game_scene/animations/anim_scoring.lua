@@ -11,19 +11,26 @@ function ScoringAnimations:init(best_score_node, score_node, best_score)
     self.best_score_node = best_score_node
     self.score_node = score_node
     self.best_score = best_score
+    self.is_score_label_animating = false
 end
 
-local function animate_scale_label(node)
-    gui.animate(node, gui.PROP_SCALE, LabelAnim.scale, gui.EASING_INCUBIC, LabelAnim.duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+function ScoringAnimations:animate_scale_label(node)
+    if self.is_score_label_animating then return end
+
+    self.is_score_label_animating = true
+
+    gui.animate(node, gui.PROP_SCALE, LabelAnim.scale, gui.EASING_INCUBIC, LabelAnim.duration, 0, function ()
+        self.is_score_label_animating = false
+    end, gui.PLAYBACK_ONCE_PINGPONG)
 end
 
-local function animate_scale_label_above_obj(node)
+function ScoringAnimations:animate_scale_label_above_obj(node)
     gui.animate(node, gui.PROP_SCALE, LabelAboveObjAnim.scale,
                 gui.EASING_INQUART, LabelAboveObjAnim.duration, 0, nil,
                 gui.PLAYBACK_ONCE_BACKWARD)
 end
 
-local function animate_label_above_obj_color(node)
+function ScoringAnimations:animate_label_above_obj_color(node)
     gui.animate(node, gui.PROP_COLOR, LabelAboveObjAnim.color,
                 gui.EASING_INQUART, LabelAboveObjAnim.duration, 0, nil,
                 gui.PLAYBACK_ONCE_FORWARD)
@@ -54,7 +61,7 @@ function ScoringAnimations:animate_scoring(new_score)
 
         if current_score == new_score then
             timer.cancel(handle)
-            animate_scale_label(self.score_node)
+            self:animate_scale_label(self.score_node)
         end
     end)
 end
@@ -67,8 +74,10 @@ function ScoringAnimations:animate_scoring_above_obj(obj, score_range)
     local rot_min, rot_max = LabelAboveObjAnim.rotation_bounds[1], LabelAboveObjAnim.rotation_bounds[2]
     gui.set_rotation(text_node, vmath.vector4(0, 0, math.random(rot_min, rot_max), 0))
 
-    animate_label_above_obj_color(text_node)
-    animate_scale_label_above_obj(text_node)
+    gui.set_scale(text_node, LabelAboveObjAnim.font_scale)
+
+    self:animate_label_above_obj_color(text_node)
+    self:animate_scale_label_above_obj(text_node)
 
     timer.delay(LabelAboveObjAnim.duration, false, function ()
         gui.delete_node(text_node)

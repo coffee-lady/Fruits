@@ -1,3 +1,0 @@
-local MessageService = {}
-
-return MessageService

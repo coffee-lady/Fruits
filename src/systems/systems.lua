@@ -1,9 +1,9 @@
-local Libs = require('src.libs.libs')
 local Constants = require('src.constants.constants')
 local Services = require('src.services.services')
 
 local ScenesService = Services.scenes
-local ScenesConst = Constants.scenes
+
+local PopupUrl = Constants.component_urls.popups.game_end.url
 
 local DataService = Services.data
 
@@ -30,7 +30,7 @@ function Systems:init()
         ScoringSys:on_game_over()
         SpawnObjectsSys:on_game_over(function ()
             local app_data = DataService:get_all()
-            ScenesService.open_popup(ScenesConst.popups.game_end, {
+            ScenesService.open_popup(PopupUrl, {
                 score = ScoringSys.score,
                 best_score = app_data.game.best_score
             })

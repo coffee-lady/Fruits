@@ -11,14 +11,14 @@ local ObjectConfig = {
         y = { 800, 850 },
     },
 
-    scale_bounds = { 0.5, 0.7 },
+    scale_bounds = { 0.7, 1 },
     d_scale_bounds = { 0.1, 0.3 },
     scale_duration_bounds = { 3, 6 },
 
     rotation_angle = 0.2,
     rotation_duration_bounds = { 3, 6 },
 
-    score_bounds = { 100, 100 },
+    score_bounds = { 100, 300 },
 }
 
 return ObjectConfig

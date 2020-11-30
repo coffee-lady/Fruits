@@ -5,7 +5,7 @@ local MsgConst = Constants.messages
 
 local ScreenService = Services.screen
 local ScenesService = Services.scenes
-local ScenesConst = Constants.scenes
+local ScenesUrls = Constants.component_urls
 
 function init(self)
 	ScreenService:init()
@@ -14,7 +14,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	ScenesService.on_init(message_id, function ()
-		ScenesService.switch_to_scene(ScenesConst.scenes.start, nil)
+		ScenesService.switch_to_scene(ScenesUrls.scenes.start.url, nil)
 	end)
 
 	if message_id == hash(MsgConst.screen.on_update) then

@@ -87,19 +87,19 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 21.955114
+      y: 80.11234
       t_x: 1.0
       t_y: 0.0
     }
     points {
-      x: 0.23866005
-      y: 19.205332
+      x: 0.2565514
+      y: 77.362564
       t_x: 0.008311946
       t_y: 0.9999654
     }
     points {
       x: 1.0
-      y: 23.425873
+      y: 81.58311
       t_x: 1.0
       t_y: 0.0
     }
@@ -441,13 +441,13 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 27.41841
+      y: 29.575186
       t_x: 1.0
       t_y: 0.0
     }
     points {
       x: 1.0
-      y: 11.35895
+      y: 13.515726
       t_x: 0.05938267
       t_y: -0.9982353
     }

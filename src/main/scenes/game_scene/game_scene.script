@@ -1,7 +1,6 @@
 local Systems = require('src.systems.systems')
 local Constants = require('src.constants.constants')
 
-local ScenesConst = Constants.scenes
 local MsgConst = Constants.messages
 
 function init(self)
