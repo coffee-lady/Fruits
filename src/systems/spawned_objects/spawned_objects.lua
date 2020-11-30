@@ -29,6 +29,10 @@ function SpawnedObjectsSystem:on_swiped_object(callback)
     SwipeSystem:on_swiped_object(callback)
 end
 
+function SpawnedObjectsSystem:on_combo_swipe(callback)
+    SwipeSystem:on_combo_swipe(callback)
+end
+
 function SpawnedObjectsSystem:on_input(action_id, action, swipe_callback)
     SwipeSystem:on_input(action_id, action, SpawnSystem.objects, swipe_callback)
 end

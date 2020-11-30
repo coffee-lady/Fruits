@@ -1,6 +1,7 @@
 local App = require('src.app')
 
 local Services = App.services
+local Config = App.config
 
 local Models = require('src.models.models')
 
@@ -21,6 +22,10 @@ function ScoringSystem:on_swiping_object(obj)
     self.score = ScoringModel:update_score(obj, self.score, self.points)
 end
 
+function ScoringSystem:on_combo_swipe(count)
+    self.score = ScoringModel:set_combo_score(self.score + count * Config.spawn_objects.combo.points)
+end
+
 function ScoringSystem:on_game_over()
     self.game_over = true
 
@@ -28,9 +33,7 @@ function ScoringSystem:on_game_over()
 
     if not app_data or not app_data.game or app_data.game and self.score > app_data.game.best_score then
         DataService:save({
-            game = {
-                best_score = self.score
-            }
+            game = { best_score = self.score }
         })
     end
 end

@@ -30,7 +30,7 @@ function ScreenService:update()
 end
 
 function ScreenService:get_sizes()
-    return self.sizes.x
+    return self.sizes
 end
 
 function ScreenService:add_listener(url)

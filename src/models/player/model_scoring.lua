@@ -22,8 +22,18 @@ end
 
 function ScoringModel:update_score(obj, score, points)
     local new_score = score + points[obj.class_id]
-    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { obj = obj, prev_score = score, new_score = new_score })
+    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { obj = obj,
+        prev_score = score,
+        new_score = new_score,
+        is_combo = false,
+    })
     return new_score
+end
+
+function ScoringModel:set_combo_score(score)
+    msg.post(msg.url(GameSceneGui), GuiMsg.scoring.set, { new_score = score, 
+        is_combo = true })
+    return score
 end
 
 return ScoringModel

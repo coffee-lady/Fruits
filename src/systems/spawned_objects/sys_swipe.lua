@@ -5,6 +5,7 @@ local Constants = App.constants
 local Models = require('src.models.models')
 
 local SwipeModel = Models.spawn_objects.swipe
+local ComboSwipeModel = Models.spawn_objects.combo_swipe
 
 local ActionsConst = Constants.actions
 
@@ -17,6 +18,10 @@ end
 
 function SwipeSystem:on_swiped_object(callback)
     SwipeModel:on_swiped_object(callback)
+end
+
+function SwipeSystem:on_combo_swipe(callback)
+    SwipeModel:on_combo_swipe(callback)
 end
 
 function SwipeSystem:on_game_over()

@@ -1,11 +1,12 @@
+local rendercam = require('rendercam.rendercam')
 local App = require('src.app')
 
 local Config = App.config
 local Constants = App.constants
 local Libs = App.libs
 
-local rendercam = require('rendercam.rendercam')
 local ObjectsManagerModel = require('src.models.spawn_objects.model_objects_manager')
+local ComboSwipeModel = require('src.models.spawn_objects.model_combo_swipe')
 
 local ObjectConfig = Config.spawn_objects.object
 local SwipeConfig = Config.spawn_objects.swipe
@@ -15,6 +16,8 @@ local MsgConst = Constants.messages
 local SwipeModel = {}
 
 function SwipeModel:new()
+    ComboSwipeModel:init()
+
     local swipe = {
         swipe_start = vmath.vector3(0, 0, 0),
         swipe_end = vmath.vector3(0, 0, 0),
@@ -43,6 +46,7 @@ function SwipeModel:on_objects_swipe(objects, action, callback)
                 msg.post(msg.url(obj.id), MsgConst.spawned_object.play_swipe_animation)
 
                 ObjectsManagerModel:delete_object(obj.id, objects)
+                ComboSwipeModel:on_swipe(obj)
 
                 if self.on_swiped_object then self.on_swiped_object_callback(obj) end
             end
@@ -52,6 +56,10 @@ end
 
 function SwipeModel:on_swiped_object(callback)
     self.on_swiped_object_callback = callback
+end
+
+function SwipeModel:on_combo_swipe(callback)
+    ComboSwipeModel:on_combo_swipe_callback(callback)
 end
 
 function SwipeModel:on_swipe(action)

@@ -4,6 +4,7 @@ local SpawnObjectsModels = {
     objects_manager = require('src.models.spawn_objects.model_objects_manager'),
     pack = require('src.models.spawn_objects.model_pack'),
     swipe = require('src.models.spawn_objects.model_swipe'),
+    combo_swipe = require('src.models.spawn_objects.model_combo_swipe'),
 }
 
 return SpawnObjectsModels

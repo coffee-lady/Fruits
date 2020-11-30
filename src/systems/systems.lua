@@ -39,6 +39,10 @@ function Systems:init()
         end)
     end)
 
+    SpawnObjectsSys:on_combo_swipe(function (count)
+        ScoringSys:on_combo_swipe(count)
+    end)
+
     SpawnObjectsSys:on_swiped_object(function (obj)
         ScoringSys:on_swiping_object(obj)
         GamingLivesSys:on_swiped_object(obj)

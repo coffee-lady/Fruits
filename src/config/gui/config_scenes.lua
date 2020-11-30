@@ -29,6 +29,12 @@ GuiScenesConfig.game = {
             scale = vmath.vector3(1, 1, 0, 0),
             font_scale = vmath.vector3(0.6, 0.6, 0),
         },
+        combo = {
+            duration = 0.9,
+            font_scale = vmath.vector3(0.6, 0.6, 0),
+            color = vmath.vector4(0, 0, 0, 0),
+            rotation_bounds = { -20, 20 },
+        },
     },
     button_animation = {
         duration = 0.3,

@@ -28,8 +28,11 @@ end
 
 function GuiScoringSystem:on_message(message_id, message, sender)
 	if message_id == hash(GuiMsg.scoring.set) then
-        Animation:animate_scoring(message.new_score)
-        Animation:animate_scoring_above_obj(message.obj, message.new_score - message.prev_score)
+        Animation:animate_scoring(message.new_score, message.is_combo)
+
+        if message.obj then
+            Animation:animate_scoring_above_obj(message.obj, message.new_score - message.prev_score)
+        end
     end
 end
 
