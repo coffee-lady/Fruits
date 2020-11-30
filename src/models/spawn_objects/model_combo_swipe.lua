@@ -18,7 +18,10 @@ function ComboSwipeModel:on_swipe(obj)
     if self.timer then timer.cancel(self.timer) end
 
     self.timer = timer.delay(ComboConfig.combo_interval, false, function ()
-        if self.callback then self.callback(self.swiped_count) end
+        if self.callback and self.swiped_count > ComboConfig.min_combo_count then
+            self.callback(self.swiped_count)
+        end
+
         self.swiped_count = 0
     end)
 end
