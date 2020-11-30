@@ -8,7 +8,6 @@ end
 
 function CoordsLib:is_point_in_circle(point, circle_coords, radius)
     point = rendercam.screen_to_world_2d(point.x, point.y, false)
-    circle_coords = rendercam.screen_to_world_2d(circle_coords.x, circle_coords.y, false)
 
     local is_in_seg_x = self:is_point_in_segment(point.x, circle_coords.x - radius, circle_coords.x + radius)
     local is_in_seg_y = self:is_point_in_segment(point.y, circle_coords.y - radius, circle_coords.y + radius)
@@ -32,6 +31,10 @@ function CoordsLib:get_vector_length(start_coords, end_coords)
     local dx = math.abs(start_coords.x - end_coords.x)
     local dy = math.abs(start_coords.y - end_coords.y)
 	return math.sqrt(dx * dx + dy * dy)
+end
+
+function CoordsLib:get_vector_velocity(x, y)
+	return math.sqrt(x * x + y * y)
 end
 
 return CoordsLib

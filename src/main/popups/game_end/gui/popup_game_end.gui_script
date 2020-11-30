@@ -27,6 +27,9 @@ function init(self)
     local current_score_node = gui.get_node(PopupConst.gui_nodes.current_score)
     local best_score_node = gui.get_node(PopupConst.gui_nodes.best_score)
 
+    self.button_home = gui.get_node(PopupConst.gui_nodes.button_home)
+    self.button_restart = gui.get_node(PopupConst.gui_nodes.button_restart)
+
     gui.set_text(current_score_node, 'Your points: ' .. popup_data.score)
     gui.set_text(best_score_node, 'Best score: ' .. popup_data.best_score)
 
@@ -42,17 +45,14 @@ function init(self)
 end
 
 function on_input(self, action_id, action)
-    local button_home = gui.get_node(PopupConst.gui_nodes.button_home)
-    local button_restart = gui.get_node(PopupConst.gui_nodes.button_restart)
-
+    GuiLib:animate_button_click(action, self.button_home, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
+    GuiLib:animate_button_click(action, self.button_restart, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
 
     if action_id == hash(ActionsConst.click) and action.released then
-        if gui.pick_node(button_home, action.x, action.y) then
-            GuiLib:animate_button_click(button_home, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
+        if gui.pick_node(self.button_home, action.x, action.y) then
             ScenesService.switch_to_scene(ScenesUrls.scenes.start.url)
-
-        elseif gui.pick_node(button_restart, action.x, action.y) then
-            GuiLib:animate_button_click(button_restart, GuiButtonsConf.blackout, GuiButtonsConf.scale, GuiButtonsConf.duration)
+        end
+        if gui.pick_node(self.button_restart, action.x, action.y) then
             ScenesService.switch_to_scene(ScenesUrls.scenes.game.url, nil, true)
         end
     end

@@ -5,6 +5,8 @@ local Config = App.config
 local Constants = App.constants
 local Libs = App.libs
 
+local CoordsLib = Libs.coords
+
 local ObjectsManagerModel = require('src.models.spawn_objects.model_objects_manager')
 local ComboSwipeModel = require('src.models.spawn_objects.model_combo_swipe')
 
@@ -36,11 +38,14 @@ function SwipeModel:get_last_coords(action)
 end
 
 function SwipeModel:on_objects_swipe(objects, action, callback)
+    if CoordsLib:get_vector_velocity(action.screen_dx, action.screen_dy) <
+        SwipeConfig.min_speed then return end
+
     for i = 1, #objects do
         local obj = objects[i]
 
         if obj and obj.id then
-            local is_swipe_throw_object = Libs.coords:is_point_in_circle(action, obj.pos, ObjectConfig.collision_object_radius)
+            local is_swipe_throw_object = Libs.coords:is_point_in_circle({ x = action.screen_x, y = action.screen_y }, obj.pos, ObjectConfig.collision_object_radius)
 
             if is_swipe_throw_object and self.swipe_length >= SwipeConfig.min_length then
                 msg.post(msg.url(obj.id), MsgConst.spawned_object.play_swipe_animation)
@@ -72,12 +77,6 @@ function SwipeModel:on_swipe(action)
     end
 
     self.swipe_end.x, self.swipe_end.y = action.screen_x, action.screen_y
-
-    if self.swipe_length > SwipeConfig.max_length then
-        local delta_coord = math.sqrt(SwipeConfig.delta_length)
-        self.swipe_start.x = self.swipe_end.x - delta_coord
-        self.swipe_start.y = self.swipe_end.y - delta_coord
-    end
 
     self.swipe_length = self:get_swipe_length(self.swipe_start, self.swipe_end)
 end
